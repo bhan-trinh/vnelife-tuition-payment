@@ -9,6 +9,7 @@ import {
 import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
 import {calculateRadius} from '@src/components/core/Utils';
+import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
 
 interface ReceiptProps {
   icon: ReactNode;
@@ -109,7 +110,9 @@ export const Receipt: React.FC<ReceiptProps> = ({
                 middle
                 center
                 row
-                style={[calculateRadius(20), {gap: 5}]}>
+                radius={20}
+                style={{gap: 5}}>
+                <ClockOutlineSvg width={20} height={20} color="grey" />
                 <Text size={12} color={'black'} textAlign="right">
                   {dueDate}
                 </Text>

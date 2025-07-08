@@ -3,6 +3,7 @@ import {FlatList, TouchableOpacity} from 'react-native';
 import {Receipt} from '../Receipt';
 import {Box, Text} from '@src/components/core';
 import {useTheme} from 'react-native-paper';
+import {ChevronRightSvg} from '@src/assets/svgs/ChevronRight';
 // import Icon from '@react-native-vector-icons/material-design-icons';
 
 interface ReceiptPaneProps {
@@ -26,12 +27,12 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
               color={theme.colors.primary}
               textAlign="right"
               weight="bold">
-              Xem tất cả
-              {/* <Icon
-                name="chevron-right"
-                size={15}
+              Xem tất cả{' '}
+              <ChevronRightSvg
+                width={8}
+                height={8}
                 color={theme.colors.primary}
-              /> */}
+              />
             </Text>
           </TouchableOpacity>
         </Box>

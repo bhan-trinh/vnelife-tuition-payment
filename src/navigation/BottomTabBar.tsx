@@ -14,12 +14,13 @@ const screenOptions = ({route}) => ({
   tabBarStyle: {
     height: 70,
     paddingHorizontal: 20,
-    paddingTop: 5,
+    paddingTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  tabBarIconStyle: {
-    marginBottom: 4,
+  tabBarItemStyle: {
+    alignItems: 'center',
+    height: 50,
   },
   tabBarIcon: ({focused}) => {
     let Icon;
