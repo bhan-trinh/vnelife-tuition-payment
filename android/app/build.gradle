@@ -77,9 +77,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.base_mini_app"
+    namespace "com.VNPTMiniApp"
     defaultConfig {
-        applicationId "com.base_mini_app"
+        applicationId "com.VNPTMiniApp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

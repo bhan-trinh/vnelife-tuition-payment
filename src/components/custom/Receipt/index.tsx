@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
-import {calculateRadius} from '@src/components/core/Utils';
 import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
 
 interface ReceiptProps {

@@ -1,4 +1,4 @@
-package com.base_mini_app
+package com.VNPTMiniApp
 
 import android.app.Application
 import com.facebook.react.PackageList

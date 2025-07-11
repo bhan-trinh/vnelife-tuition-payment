@@ -1,8 +1,9 @@
 {
-  "name": "base_mini_app",
+  "name": "VNPTMiniApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "patch-package",
     "pod": "(cd ios && pod install)",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -16,10 +17,10 @@
     "build_bundle": "mkdir -p build && rm -rf build/* && yarn bundle_ios && yarn bundle_android && cd build && zip -r Archive.zip ."
   },
   "dependencies": {
-    "@react-native-vector-icons/common": "11.0.0",
-    "@react-native-vector-icons/material-design-icons": "^7.4.47",
     "@googlemaps/polyline-codec": "^1.0.28",
     "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-vector-icons/common": "11.0.0",
+    "@react-native-vector-icons/material-design-icons": "^7.4.47",
     "@react-navigation/bottom-tabs": "^6.x",
     "@react-navigation/drawer": "^6.x",
     "@react-navigation/material-top-tabs": "^6.x",
@@ -31,6 +32,8 @@
     "lodash": "^4.17.21",
     "lottie-react-native": "^7.2.2",
     "moment": "^2.30.1",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.3.1",
     "react-native": "0.75.5",
     "react-native-date-picker": "^5.0.12",
@@ -42,7 +45,6 @@
     "react-native-linear-gradient": "^2.8.3",
     "react-native-maps": "1.18.0",
     "react-native-modalize": "^2.1.1",
-    "react-native-pager-view": "6.1.4",
     "react-native-paper": "^5.13.3",
     "react-native-portalize": "^1.0.7",
     "react-native-qrcode-svg": "6.3.12",
@@ -58,10 +60,10 @@
     "react-native-vision-camera": "^4.6.4",
     "react-native-webrtc": "^124.0.5",
     "react-native-webview": "^13.13.5",
+    "vnpt-mini-api": "0.2.9",
     "vnpt-rn-component": "^0.2.4",
     "yup": "^1.6.1",
-    "zustand": "^5.0.3",
-    "vnpt-mini-api": "0.2.9"
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

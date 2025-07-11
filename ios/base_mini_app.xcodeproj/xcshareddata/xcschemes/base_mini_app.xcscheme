@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "base_mini_app.app"
-               BlueprintName = "base_mini_app"
-               ReferencedContainer = "container:base_mini_app.xcodeproj">
+               BuildableName = "VNPTMiniApp.app"
+               BlueprintName = "VNPTMiniApp"
+               ReferencedContainer = "container:VNPTMiniApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "base_mini_appTests.xctest"
-               BlueprintName = "base_mini_appTests"
-               ReferencedContainer = "container:base_mini_app.xcodeproj">
+               BuildableName = "VNPTMiniAppTests.xctest"
+               BlueprintName = "VNPTMiniAppTests"
+               ReferencedContainer = "container:VNPTMiniApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "base_mini_app.app"
-            BlueprintName = "base_mini_app"
-            ReferencedContainer = "container:base_mini_app.xcodeproj">
+            BuildableName = "VNPTMiniApp.app"
+            BlueprintName = "VNPTMiniApp"
+            ReferencedContainer = "container:VNPTMiniApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "base_mini_app.app"
-            BlueprintName = "base_mini_app"
-            ReferencedContainer = "container:base_mini_app.xcodeproj">
+            BuildableName = "VNPTMiniApp.app"
+            BlueprintName = "VNPTMiniApp"
+            ReferencedContainer = "container:VNPTMiniApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
