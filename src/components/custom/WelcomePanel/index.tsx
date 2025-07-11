@@ -25,10 +25,10 @@ export const WelcomePanel = () => {
         </Box>
       </Box>
       <Box style={styles.welcomeTextBox}>
-        <Text size={10} style={styles.normalText}>
+        <Text size={12} style={styles.normalText}>
           Chào mừng bạn đến với
         </Text>
-        <Text size={16} weight="bold" style={[styles.normalText]}>
+        <Text size={18} weight="bold" style={[styles.normalText]}>
           Thanh toán trực tuyến
         </Text>
       </Box>

@@ -20,6 +20,7 @@ export const ServicePanel = ({servicesList}) => {
                 center
                 justifyContent="flex-start"
                 width="25%"
+                paddingHorizontal={10}
                 marginTop={20}>
                 <TouchableOpacity style={styles.servicesButton}>
                   {element.icon}
@@ -30,8 +31,8 @@ export const ServicePanel = ({servicesList}) => {
                     position="absolute"
                     right={16}
                     top={0}
-                    width={16}
-                    height={16}
+                    width={18}
+                    height={18}
                     middle
                     center
                     radius={10}>
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2F2F2',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 45,
-    height: 45,
+    width: 56,
+    height: 56,
   },
 });

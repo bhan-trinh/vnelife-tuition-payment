@@ -30,7 +30,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             showsVerticalScrollIndicator={false}>
             <Box
               paddingHorizontal="7%"
-              paddingVertical={height * 0.05}
+              paddingVertical={height * 0.08}
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
@@ -46,7 +46,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
         </ImageBackground>
       </Box>
     );
-  }
+  },
 );
 
 export default React.memo(HomeScreen);

@@ -48,7 +48,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
           </Box>
 
           <Box style={styles.ticketBox}>
-            <Text size={14} weight="bold" style={[styles.normalText]}>
+            <Text size={16} weight="bold" style={[styles.normalText]}>
               {title}
             </Text>
           </Box>
@@ -69,12 +69,12 @@ export const Receipt: React.FC<ReceiptProps> = ({
         <Box flex={3} paddingVertical={10} justifyContent="space-around">
           <Box row alignItems="center">
             <Box flex={1}>
-              <Text size={12} color={'grey'}>
+              <Text size={14} color={'grey'}>
                 Mã hóa đơn
               </Text>
             </Box>
             <Box flex={1}>
-              <Text size={14} color={'black'} textAlign="right">
+              <Text size={16} color={'black'} textAlign="right">
                 {id}
               </Text>
             </Box>
@@ -82,12 +82,12 @@ export const Receipt: React.FC<ReceiptProps> = ({
 
           <Box row alignItems="center">
             <Box flex={1}>
-              <Text size={12} color={'grey'}>
+              <Text size={14} color={'grey'}>
                 Ngày khởi tạo hóa đơn
               </Text>
             </Box>
             <Box flex={1}>
-              <Text size={14} color={'black'} textAlign="right">
+              <Text size={16} color={'black'} textAlign="right">
                 {date}
               </Text>
             </Box>
@@ -95,7 +95,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
 
           <Box row alignItems="center">
             <Box flex={1}>
-              <Text size={12} color={'grey'}>
+              <Text size={14} color={'grey'}>
                 Hạn thanh toán
               </Text>
             </Box>
@@ -112,7 +112,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
                 radius={20}
                 style={{gap: 5}}>
                 <ClockOutlineSvg width={20} height={20} color="grey" />
-                <Text size={12} color={'black'} textAlign="right">
+                <Text size={14} color={'black'} textAlign="right">
                   {dueDate}
                 </Text>
               </Box>
@@ -124,11 +124,11 @@ export const Receipt: React.FC<ReceiptProps> = ({
 
         <Box flex={3} paddingVertical={15} justifyContent="space-around">
           <Box flex={2}>
-            <Text size={12} color={'grey'}>
+            <Text size={14} color={'grey'}>
               Số tiền cần thanh toán
             </Text>
             {/* Format amount of money with dots */}
-            <Text size={14} color={'black'} weight="bold">
+            <Text size={16} color={'black'} weight="bold">
               {amount.toLocaleString().replaceAll(',', '.')} VNĐ
             </Text>
           </Box>
@@ -140,7 +140,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text size={14} weight="bold" color={'white'} textAlign="center">
+            <Text size={16} weight="bold" color={'white'} textAlign="center">
               Thanh toán
             </Text>
           </TouchableOpacity>
