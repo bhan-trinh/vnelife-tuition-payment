@@ -3,6 +3,7 @@ import {Box, LinearGradient, Text} from '@src/components/core';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {GradientButton} from '../GradientButton';
 import {WalletSvg} from '@src/assets/svgs/WalletSvg';
+import {size} from '@src/common/styles/size';
 
 export const WelcomePanel = () => {
   return (
@@ -25,10 +26,10 @@ export const WelcomePanel = () => {
         </Box>
       </Box>
       <Box style={styles.welcomeTextBox}>
-        <Text size={12} style={styles.normalText}>
+        <Text size={size.s} style={styles.normalText}>
           Chào mừng bạn đến với
         </Text>
-        <Text size={18} weight="bold" style={[styles.normalText]}>
+        <Text size={size.xl} weight="bold" style={[styles.normalText]}>
           Thanh toán trực tuyến
         </Text>
       </Box>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   welcomeTextBox: {
-    width: '62%',
+    width: '80%',
   },
 
   normalText: {

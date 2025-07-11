@@ -4,6 +4,7 @@ import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {ImageBackground, useWindowDimensions} from 'react-native';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
+import {size} from '@src/common/styles/size';
 
 export interface HistoryScreenProps
   extends RootStackScreenProps<'HISTORY_SCREEN'> {}
@@ -27,14 +28,14 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
-              <Text size={10}>History</Text>
+              <Text size={size.xs}>History</Text>
               <WelcomePanel />
             </Box>
           </ScrollView>
         </ImageBackground>
       </Box>
     );
-  }
+  },
 );
 
 export default React.memo(HistoryScreen);

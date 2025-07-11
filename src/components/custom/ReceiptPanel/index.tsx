@@ -5,6 +5,7 @@ import {Box, Text} from '@src/components/core';
 import {useTheme} from 'react-native-paper';
 import {ChevronRightSvg} from '@src/assets/svgs/ChevronRight';
 // import Icon from '@react-native-vector-icons/material-design-icons';
+import {size} from '@src/common/styles/size';
 
 interface ReceiptPaneProps {
   receiptList: Array<any>;
@@ -15,15 +16,15 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
   return (
     <>
       <Box row center>
-        <Box width="70%">
-          <Text size={18} weight="bold">
+        <Box width="60%">
+          <Text size={size.xl} weight="bold">
             Hóa đơn cần thanh toán
           </Text>
         </Box>
-        <Box width="30%">
+        <Box width="40%">
           <TouchableOpacity>
             <Text
-              size={14}
+              size={size.m}
               color={theme.colors.primary}
               textAlign="right"
               weight="bold">

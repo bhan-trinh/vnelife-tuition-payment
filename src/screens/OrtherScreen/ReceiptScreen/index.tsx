@@ -4,6 +4,7 @@ import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {ImageBackground, useWindowDimensions} from 'react-native';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
+import {size} from '@src/common/styles/size';
 
 export interface ReceiptScreenProps
   extends RootStackScreenProps<'RECEIPT_SCREEN'> {}
@@ -27,14 +28,14 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
-              <Text size={10}>Receipt</Text>
+              <Text size={size.xs}>Receipt</Text>
               <WelcomePanel />
             </Box>
           </ScrollView>
         </ImageBackground>
       </Box>
     );
-  }
+  },
 );
 
 export default React.memo(ReceiptScreen);

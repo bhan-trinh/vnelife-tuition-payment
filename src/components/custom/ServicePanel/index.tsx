@@ -3,13 +3,14 @@ import {Box, Text} from '@src/components/core';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useTheme} from 'react-native-paper';
 // import Icon from '@react-native-vector-icons/material-design-icons';
+import {size} from '@src/common/styles/size';
 
 export const ServicePanel = ({servicesList}) => {
   const theme = useTheme();
   try {
     return (
       <Box flex={5}>
-        <Text size={18} weight="bold">
+        <Text size={size.xl} weight="bold">
           Danh mục dịch vụ
         </Text>
         <Box style={styles.servicesBox}>
@@ -36,12 +37,12 @@ export const ServicePanel = ({servicesList}) => {
                     middle
                     center
                     radius={10}>
-                    <Text size={10} weight="bold" color="white">
+                    <Text size={size.xs} weight="bold" color="white">
                       {element.notif}
                     </Text>
                   </Box>
                 )}
-                <Text size={14} textAlign="center">
+                <Text size={size.m} textAlign="center">
                   {element.title}
                 </Text>
               </Box>

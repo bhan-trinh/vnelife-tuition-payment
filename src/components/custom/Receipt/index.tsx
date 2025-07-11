@@ -9,6 +9,7 @@ import {
 import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
 import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
+import {size} from '@src/common/styles/size';
 
 interface ReceiptProps {
   icon: ReactNode;
@@ -28,19 +29,22 @@ export const Receipt: React.FC<ReceiptProps> = ({
   amount,
 }) => {
   const theme = useTheme();
-  const {width} = useWindowDimensions();
+  const {height, width} = useWindowDimensions();
   return (
     <ImageBackground
       source={require('@src/assets/images/Background.png')}
       resizeMode="contain">
       <Box
+        top={5}
         height={310}
         width={width * 0.85}
         flex={1}
-        justifyContent="center"
+        justifyContent="flex-start"
         paddingHorizontal={'6%'}
-        paddingTop={'6%'}>
-        <Box flex={2} row alignItems="center">
+        paddingVertical={'3%'}
+        borderWidth={1}
+        borderColor={'#00000000'}>
+        <Box row alignItems="center">
           <Box width="17%">
             <TouchableOpacity style={styles.servicesButton}>
               {icon}
@@ -48,7 +52,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
           </Box>
 
           <Box style={styles.ticketBox}>
-            <Text size={16} weight="bold" style={[styles.normalText]}>
+            <Text size={size.l} weight="bold" style={[styles.normalText]}>
               {title}
             </Text>
           </Box>
@@ -66,15 +70,20 @@ export const Receipt: React.FC<ReceiptProps> = ({
           />
         </Svg>
 
-        <Box flex={3} paddingVertical={10} justifyContent="space-around">
+        {/* THÔNG TIN HOÁ ĐƠN ------------------------------------------*/}
+        <Box
+          paddingVertical={10}
+          justifyContent="space-around"
+          borderColor={'#00000000'}
+          borderWidth={1}>
           <Box row alignItems="center">
             <Box flex={1}>
-              <Text size={14} color={'grey'}>
+              <Text size={size.m} color={'grey'}>
                 Mã hóa đơn
               </Text>
             </Box>
             <Box flex={1}>
-              <Text size={16} color={'black'} textAlign="right">
+              <Text size={size.l} color={'black'} textAlign="right">
                 {id}
               </Text>
             </Box>
@@ -82,23 +91,24 @@ export const Receipt: React.FC<ReceiptProps> = ({
 
           <Box row alignItems="center">
             <Box flex={1}>
-              <Text size={14} color={'grey'}>
+              <Text size={size.m} color={'grey'}>
                 Ngày khởi tạo hóa đơn
               </Text>
             </Box>
             <Box flex={1}>
-              <Text size={16} color={'black'} textAlign="right">
+              <Text size={size.l} color={'black'} textAlign="right">
                 {date}
               </Text>
             </Box>
           </Box>
 
-          <Box row alignItems="center">
+          <Box row alignItems="center" borderColor={'black'}>
             <Box flex={1}>
-              <Text size={14} color={'grey'}>
+              <Text size={size.m} color={'grey'}>
                 Hạn thanh toán
               </Text>
             </Box>
+
             <Box justifyContent="flex-end">
               <Box
                 borderColor="#DDD"
@@ -112,7 +122,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
                 radius={20}
                 style={{gap: 5}}>
                 <ClockOutlineSvg width={20} height={20} color="grey" />
-                <Text size={14} color={'black'} textAlign="right">
+                <Text size={size.m} color={'black'} textAlign="right">
                   {dueDate}
                 </Text>
               </Box>
@@ -120,27 +130,44 @@ export const Receipt: React.FC<ReceiptProps> = ({
           </Box>
         </Box>
 
-        <Box color="#D4D7DA" height={1} />
+        <Box
+          borderColor={'red'}
+          justifyContent="center"
+          // borderWidth={1}
+        >
+          <Box color="#D4D7DA" height={1} />
+        </Box>
 
-        <Box flex={3} paddingVertical={15} justifyContent="space-around">
-          <Box flex={2}>
-            <Text size={14} color={'grey'}>
+        {/* SỐ TIỀN HOÁ ĐƠN ------------------------------------------*/}
+
+        <Box
+          justifyContent="space-around"
+          padding={5}
+          flex={1}
+          borderColor={'#00000000'}
+          borderWidth={1}>
+          <Box>
+            <Text size={size.m} color={'grey'}>
               Số tiền cần thanh toán
             </Text>
             {/* Format amount of money with dots */}
-            <Text size={16} color={'black'} weight="bold">
+            <Text size={size.l} color={'black'} weight="bold">
               {amount.toLocaleString().replaceAll(',', '.')} VNĐ
             </Text>
           </Box>
           <TouchableOpacity
             style={{
-              flex: 2,
+              flex: 0.8,
               backgroundColor: theme.colors.primary,
               borderRadius: 5,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text size={16} weight="bold" color={'white'} textAlign="center">
+            <Text
+              size={size.l}
+              weight="bold"
+              color={'white'}
+              textAlign="center">
               Thanh toán
             </Text>
           </TouchableOpacity>
