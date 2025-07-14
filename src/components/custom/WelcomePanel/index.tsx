@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box, LinearGradient, Text} from '@src/components/core';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import {GradientButton} from '../GradientButton';
+import {StyleSheet} from 'react-native';
 import {WalletSvg} from '@src/assets/svgs/WalletSvg';
 import {size} from '@src/common/styles/size';
 

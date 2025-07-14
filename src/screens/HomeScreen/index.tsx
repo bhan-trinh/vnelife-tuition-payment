@@ -1,23 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {RootStackScreenProps} from '@src/navigation/types';
-import {Box} from '@src/components/core';
-import {ImageBackground, useWindowDimensions} from 'react-native';
+import {Box, LinearGradient} from '@src/components/core';
+import {ImageBackground, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {ServicePanel} from '@src/components/custom/ServicePanel';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
 import {ReceiptPanel} from '@src/components/custom/ReceiptPanel';
 import {receiptList} from '@src/data/ReceiptData/receiptList';
 import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
+import ChatBotSvg from '@src/assets/svgs/ChatBotSvg';
+import {ChatBotButton} from '@src/components/custom/ChatBotButton';
 
 export interface HomeScreenProps extends RootStackScreenProps<'HOME_SCREEN'> {}
 export type HomeScreenRef = {};
 const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
   (props, _ref) => {
     const {} = props;
-
-    const {height} = useWindowDimensions();
-
-    const [isOpen, setOpen] = useState(false);
 
     return (
       <Box flex={1} color="white">
@@ -30,7 +28,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             showsVerticalScrollIndicator={false}>
             <Box
               paddingHorizontal="7%"
-              paddingVertical={height * 0.08}
+              paddingVertical={50}
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
@@ -44,9 +42,10 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             </Box>
           </ScrollView>
         </ImageBackground>
+        <ChatBotButton />
       </Box>
     );
   },
 );
 
-export default React.memo(HomeScreen);
+export default HomeScreen;

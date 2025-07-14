@@ -157,7 +157,8 @@ export const Receipt: React.FC<ReceiptProps> = ({
           </Box>
           <TouchableOpacity
             style={{
-              flex: 0.8,
+              flex: 1,
+              maxHeight: 50,
               backgroundColor: theme.colors.primary,
               borderRadius: 5,
               alignItems: 'center',
