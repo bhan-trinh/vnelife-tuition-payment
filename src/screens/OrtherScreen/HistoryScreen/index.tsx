@@ -5,6 +5,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {ImageBackground, useWindowDimensions} from 'react-native';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
 import {size} from '@src/common/styles/size';
+import {PastTransaction} from '@src/components/custom/PastTransaction.tsx';
 
 export interface HistoryScreenProps
   extends RootStackScreenProps<'HISTORY_SCREEN'> {}
@@ -24,12 +25,18 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
             showsVerticalScrollIndicator={false}>
             <Box
               paddingHorizontal="7%"
-              paddingVertical={height * 0.05}
+              paddingVertical={50}
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
-              <Text size={size.xs}>History</Text>
-              <WelcomePanel />
+              <Text size={size.xl} color={'black'} weight="bold">
+                Lịch sử thanh toán
+              </Text>
+              <Box>
+                {[0, 1, 2].map(val => (
+                  <PastTransaction key={val} />
+                ))}
+              </Box>
             </Box>
           </ScrollView>
         </ImageBackground>
