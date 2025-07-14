@@ -4,6 +4,7 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import {useTheme} from 'react-native-paper';
 // import Icon from '@react-native-vector-icons/material-design-icons';
 import {size} from '@src/common/styles/size';
+import {IconBox} from '../IconBox';
 
 export const ServicePanel = ({servicesList}) => {
   const theme = useTheme();
@@ -13,39 +14,15 @@ export const ServicePanel = ({servicesList}) => {
         <Text size={size.xl} weight="bold">
           Danh mục dịch vụ
         </Text>
-        <Box style={styles.servicesBox}>
+        <Box flex={1} row wrap="wrap">
           {servicesList.map((element: any[], index: number) => {
             return (
-              <Box
+              <IconBox
                 key={index}
-                center
-                justifyContent="flex-start"
-                width="25%"
-                paddingHorizontal={10}
-                marginTop={20}>
-                <TouchableOpacity style={styles.servicesButton}>
-                  {element.icon}
-                </TouchableOpacity>
-                {element.notif && (
-                  <Box
-                    color="#C10800"
-                    position="absolute"
-                    right={16}
-                    top={0}
-                    width={18}
-                    height={18}
-                    middle
-                    center
-                    radius={10}>
-                    <Text size={size.xs} weight="bold" color="white">
-                      {element.notif}
-                    </Text>
-                  </Box>
-                )}
-                <Text size={size.m} textAlign="center">
-                  {element.title}
-                </Text>
-              </Box>
+                icon={element.icon}
+                notif={element.notif}
+                title={element.title}
+              />
             );
           })}
         </Box>
@@ -55,20 +32,3 @@ export const ServicePanel = ({servicesList}) => {
     console.log(error);
   }
 };
-
-const styles = StyleSheet.create({
-  servicesBox: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-
-  servicesButton: {
-    borderRadius: 45,
-    backgroundColor: '#F2F2F2',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 56,
-    height: 56,
-  },
-});
