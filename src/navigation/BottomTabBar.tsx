@@ -2,13 +2,13 @@ import React from 'react';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '@src/screens/HomeScreen';
-import ReceiptScreen from '@src/screens/OrtherScreen/ReceiptScreen';
-import HistoryScreen from '@src/screens/OrtherScreen/HistoryScreen';
+import ReceiptScreen from '@src/screens/OtherScreen/ReceiptScreen';
+import HistoryScreen from '@src/screens/OtherScreen/HistoryScreen';
 import {ReceiptSvg} from '@src/assets/svgs/ReceiptSvg';
 import {HistorySvg} from '@src/assets/svgs/HistorySvg';
 import {HouseSvg} from '@src/assets/svgs/HouseSvg';
 import {theme} from '@src/assets/colors/theme';
-import ServiceScreen from '@src/screens/OrtherScreen/ServiceScreen';
+import ServiceScreen from '@src/screens/OtherScreen/ServiceScreen';
 import {ReceiptSearchSvg} from '@src/assets/svgs/ReceiptSearchSvg';
 
 const Tab = createBottomTabNavigator();

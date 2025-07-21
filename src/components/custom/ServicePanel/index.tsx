@@ -11,7 +11,7 @@ import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {LookUpScreenProps} from '@src/screens/OrtherScreen/LookUpScreen/LookUpScreen';
+import {LookUpScreenProps} from '@src/screens/OtherScreen/LookUpScreen/LookUpScreen';
 import {HomeScreenProps} from '@src/screens/HomeScreen';
 import {RootStackParamList} from '@src/navigation/types';
 

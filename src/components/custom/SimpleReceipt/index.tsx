@@ -9,6 +9,7 @@ import {useTheme} from 'react-native-paper';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {theme} from '@src/assets/colors/theme';
 import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
+import {formatMoney} from '@src/common/func/formatMoney';
 
 interface ReceiptProps {
   receipt: ReceiptItem;
