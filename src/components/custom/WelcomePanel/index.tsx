@@ -3,6 +3,7 @@ import {Box, LinearGradient, Text} from '@src/components/core';
 import {StyleSheet} from 'react-native';
 import {WalletSvg} from '@src/assets/svgs/WalletSvg';
 import {size} from '@src/common/styles/size';
+import {theme} from '@src/assets/colors/theme';
 
 export const WelcomePanel = () => {
   return (
@@ -18,8 +19,8 @@ export const WelcomePanel = () => {
           <LinearGradient
             angle={-45}
             colorList={[
-              {color: '#65FDF0', offset: '0%', opacity: '1'},
-              {color: '#1D6FA3', offset: '100%', opacity: '1'},
+              {color: theme.colors.highlight2, offset: '0%', opacity: '1'},
+              {color: theme.colors.highlight1, offset: '100%', opacity: '1'},
             ]}
           />
         </Box>

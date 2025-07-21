@@ -1,20 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
-import {ImageBackground, useWindowDimensions} from 'react-native';
-import {WelcomePanel} from '@src/components/custom/WelcomePanel';
+import {useWindowDimensions} from 'react-native';
 import {size} from '@src/common/styles/size';
-import {PastTransaction} from '@src/components/custom/PastTransaction.tsx';
 import {Background} from '@src/components/custom/Background/Background';
+import {ServicePanel} from '@src/components/custom/ServicePanel';
+import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
 
-export interface HistoryScreenProps
-  extends RootStackScreenProps<'HISTORY_SCREEN'> {}
-export type HistoryScreenRef = {};
-const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
+export interface ServiceScreenProps
+  extends RootStackScreenProps<'SERVICE_SCREEN'> {}
+export type ServiceScreenRef = {};
+const ServiceScreen = React.forwardRef<ServiceScreenRef, ServiceScreenProps>(
   (props, _ref) => {
-    const {} = props;
+    const {navigation} = props;
     const {height} = useWindowDimensions();
+    const [searchWord, setSearchWord] = useState('');
     return (
       <Box flex={1} color="white">
         <Background>
@@ -24,18 +25,11 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
             showsVerticalScrollIndicator={false}>
             <Box
               paddingHorizontal="7%"
-              paddingVertical={50}
+              paddingVertical={height * 0.05}
               justifyContent="space-around"
               color="transparent"
               style={{gap: 15}}>
-              <Text size={size.xl} color={'black'} weight="bold">
-                Lịch sử thanh toán
-              </Text>
-              <Box>
-                {[0, 1, 2].map(val => (
-                  <PastTransaction key={val} />
-                ))}
-              </Box>
+              <ServicePanel servicesList={servicesList} />
             </Box>
           </ScrollView>
         </Background>
@@ -44,4 +38,4 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
   },
 );
 
-export default React.memo(HistoryScreen);
+export default React.memo(ServiceScreen);

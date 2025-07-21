@@ -4,6 +4,9 @@ import {ROUTER_ROOT} from '@src/navigation/routers';
 import {StatusBar} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabBar} from './BottomTabBar';
+import TransactionScreen from '@src/screens/OrtherScreen/TransactionScreen/TransactionScreen';
+import LookUpScreen from '@src/screens/OrtherScreen/LookUpScreen/LookUpScreen';
+import ReceiptScreen from '@src/screens/OrtherScreen/ReceiptScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,6 +29,18 @@ const RootStack = () => {
           gestureEnabled: false,
         }}>
         <Stack.Screen name={ROUTER_ROOT.BOTTOM_TABS} component={BottomTabBar} />
+        <Stack.Screen
+          name={ROUTER_ROOT.TRANSACTION_SCREEN}
+          component={TransactionScreen}
+        />
+        <Stack.Screen
+          name={ROUTER_ROOT.LOOKUP_SCREEN}
+          component={LookUpScreen}
+        />
+        <Stack.Screen
+          name={ROUTER_ROOT.RECEIPT_SCREEN}
+          component={ReceiptScreen}
+        />
         {/* <Stack.Screen name={ROUTER_ROOT.HOME_SCREEN} component={HomeScreen} />
         <Stack.Screen
           name={ROUTER_ROOT.RECEIPT_SCREEN}

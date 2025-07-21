@@ -1,0 +1,141 @@
+import React, {useState} from 'react';
+import {RootStackParamList, RootStackScreenProps} from '@src/navigation/types';
+import {Box, Input, Text} from '@src/components/core';
+import {ScrollView} from 'react-native-gesture-handler';
+import {
+  ImageBackground,
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
+import {WelcomePanel} from '@src/components/custom/WelcomePanel';
+import {size} from '@src/common/styles/size';
+import {PastTransaction} from '@src/components/custom/PastTransaction.tsx';
+import {IconBox} from '@src/components/custom/IconBox';
+import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
+import {IconBoxSingle} from '@src/components/custom/IconBoxSingle';
+import {useNavigation, useTheme} from '@react-navigation/native';
+import {ROUTER_ROOT} from '@src/navigation/routers';
+import {theme} from '@src/assets/colors/theme';
+import {Background} from '@src/components/custom/Background/Background';
+import {SERVER_URL} from '../../../../config';
+import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+export interface LookUpScreenProps
+  extends RootStackScreenProps<'LOOKUP_SCREEN'> {}
+export type LookUpScreenRef = {};
+const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
+  (props, _ref) => {
+    const {route} = props;
+    const {service} = route.params;
+    const {height} = useWindowDimensions();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const [searchWord, setSearchWord] = useState('');
+    return (
+      <Box flex={1} color="white">
+        <Background>
+          <ScrollView
+            style={{backgroundColor: '#00000000', height: '100%'}}
+            contentInsetAdjustmentBehavior="automatic"
+            showsVerticalScrollIndicator={false}>
+            <Box
+              paddingHorizontal="7%"
+              paddingVertical={50}
+              justifyContent="space-around"
+              color="transparent"
+              style={{gap: 15}}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate(ROUTER_ROOT.BOTTOM_TABS)}>
+                <Text size={size.xl} color={'black'} weight="bold">
+                  {'<'} Tra cứu dịch vụ
+                </Text>
+              </TouchableOpacity>
+              <Box center middle gap={20}>
+                <IconBoxSingle
+                  width={200}
+                  height={200}
+                  elevation={4}
+                  icon={
+                    tuitionServiceImages[
+                      service as keyof typeof tuitionServiceImages
+                    ]
+                  }
+                />
+                <Box
+                  row
+                  radius={45}
+                  width={'100%'}
+                  borderWidth={1}
+                  borderColor="#CCC"
+                  paddingHorizontal={14}
+                  marginHorizontal={-8}>
+                  <Input
+                    width={'90%'}
+                    placeholder="Mã định danh"
+                    size={size.m}
+                    color="#999"
+                    value={searchWord}
+                    onChangeText={text => setSearchWord(text)}
+                  />
+                  <Box width={'10%'} center middle>
+                    <TouchableOpacity onPress={() => setSearchWord('')}>
+                      <Text color="black">x</Text>
+                    </TouchableOpacity>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          </ScrollView>
+        </Background>
+
+        <Box
+          color="white"
+          elevation={24}
+          height={70}
+          bottom={70}
+          padding={10}
+          gap={10}>
+          <TouchableOpacity
+            style={{
+              height: 50,
+              backgroundColor: theme.colors.primary,
+              borderRadius: 5,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={async () => {
+              console.log('connecting...');
+              const response = await getReceiptFromApiAsync();
+              console.log(response.thanh_toan);
+              navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
+                receipt: response,
+              });
+            }}>
+            <Text
+              size={size.l}
+              weight="bold"
+              color={'white'}
+              textAlign="center">
+              Tra cứu thông tin
+            </Text>
+          </TouchableOpacity>
+        </Box>
+      </Box>
+    );
+  },
+);
+
+export default LookUpScreen;
+
+const getReceiptFromApiAsync = async (): Promise<ReceiptItem> => {
+  try {
+    const response = await fetch(`${SERVER_URL}/getBill`);
+    const json = await response.json();
+    var billDetail = json.BILL_DETAIL;
+    const r: ReceiptItem = JSON.parse(billDetail);
+    r.dich_vu = 'vnedu';
+    return r;
+  } catch (error) {
+    throw `Error while fetching from API: ${error}`;
+  }
+};

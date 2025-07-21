@@ -6,13 +6,22 @@ import {useTheme} from 'react-native-paper';
 import {ChevronRightSvg} from '@src/assets/svgs/ChevronRight';
 // import Icon from '@react-native-vector-icons/material-design-icons';
 import {size} from '@src/common/styles/size';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTER_ROOT} from '@src/navigation/routers';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '@src/navigation/types';
+import {theme} from '@src/assets/colors/theme';
 
 interface ReceiptPaneProps {
   receiptList: Array<any>;
+  navigation: any;
 }
 
-export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
-  const theme = useTheme();
+export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({
+  receiptList,
+  navigate,
+}) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <>
       <Box row center>
@@ -22,13 +31,14 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
           </Text>
         </Box>
         <Box width="40%">
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTER_ROOT.RECEIPT_SCREEN)}>
             <Text
               size={size.m}
               color={theme.colors.primary}
               textAlign="right"
               weight="bold">
-              Xem tất cả{' '}
+              Xem tất cả
               <ChevronRightSvg
                 width={8}
                 height={8}
@@ -50,12 +60,12 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
         renderItem={receipt => {
           return (
             <Receipt
-              icon={receipt.item.icon}
-              title={receipt.item.title}
-              id={receipt.item.id}
-              date={receipt.item.date}
-              dueDate={receipt.item.dueDate}
-              amount={receipt.item.amount}
+              receipt={receipt.item}
+              navigateToTransaction={() =>
+                navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
+                  receipt: receipt.item,
+                })
+              }
             />
           );
         }}

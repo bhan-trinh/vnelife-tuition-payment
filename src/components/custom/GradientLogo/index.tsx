@@ -1,6 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Box} from '@src/components/core';
 import {LinearGradient} from '@src/components/core';
+import {theme} from '@src/assets/colors/theme';
 
 interface GradientButtonProps {
   icon?: string;
@@ -19,8 +20,8 @@ export const GradientButton: React.FC<GradientButtonProps> = ({size, xml}) => {
       <LinearGradient
         angle={-45}
         colorList={[
-          {color: '#65FDF0', offset: '0%', opacity: '1'},
-          {color: '#1D6FA3', offset: '100%', opacity: '1'},
+          {color: theme.colors.highlight2, offset: '0%', opacity: '1'},
+          {color: theme.colors.highlight1, offset: '100%', opacity: '1'},
         ]}
       />
       <Box center>{xml}</Box>

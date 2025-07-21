@@ -10,25 +10,23 @@ import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
 import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
 import {size} from '@src/common/styles/size';
+import {IconBoxSingle} from '../IconBoxSingle';
+import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
+import {tuitionServiceList} from '@src/data/TuitionServiceData/tuitionServiceList';
+import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
+import {theme} from '@src/assets/colors/theme';
+import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
+import {formatMoney} from '@src/common/func/formatMoney';
 
 interface ReceiptProps {
-  icon: ReactNode;
-  title: string;
-  id: string;
-  date: string;
-  dueDate: string;
-  amount: number;
+  receipt: ReceiptItem;
+  navigateToTransaction: () => void;
 }
 
 export const Receipt: React.FC<ReceiptProps> = ({
-  icon,
-  title,
-  id,
-  date,
-  dueDate,
-  amount,
+  receipt,
+  navigateToTransaction,
 }) => {
-  const theme = useTheme();
   const {height, width} = useWindowDimensions();
   return (
     <ImageBackground
@@ -46,14 +44,18 @@ export const Receipt: React.FC<ReceiptProps> = ({
         borderColor={'#00000000'}>
         <Box row alignItems="center">
           <Box width="17%">
-            <TouchableOpacity style={styles.servicesButton}>
-              {icon}
-            </TouchableOpacity>
+            <IconBoxSingle
+              icon={
+                tuitionServiceImages[
+                  receipt.dich_vu as keyof typeof tuitionServiceImages
+                ]
+              }
+            />
           </Box>
 
           <Box style={styles.ticketBox}>
             <Text size={size.l} weight="bold" style={[styles.normalText]}>
-              {title}
+              {receipt.thanh_toan[0].noi_dung}
             </Text>
           </Box>
         </Box>
@@ -79,12 +81,12 @@ export const Receipt: React.FC<ReceiptProps> = ({
           <Box row alignItems="center">
             <Box flex={1}>
               <Text size={size.m} color={'grey'}>
-                Mã hóa đơn
+                Tên học sinh
               </Text>
             </Box>
             <Box flex={1}>
               <Text size={size.l} color={'black'} textAlign="right">
-                {id}
+                {receipt.hoc_sinh_info.ten_hoc_sinh}
               </Text>
             </Box>
           </Box>
@@ -92,12 +94,12 @@ export const Receipt: React.FC<ReceiptProps> = ({
           <Box row alignItems="center">
             <Box flex={1}>
               <Text size={size.m} color={'grey'}>
-                Ngày khởi tạo hóa đơn
+                Mã định danh
               </Text>
             </Box>
             <Box flex={1}>
               <Text size={size.l} color={'black'} textAlign="right">
-                {date}
+                {receipt.hoc_sinh_info.lop_hoc_id}
               </Text>
             </Box>
           </Box>
@@ -107,25 +109,6 @@ export const Receipt: React.FC<ReceiptProps> = ({
               <Text size={size.m} color={'grey'}>
                 Hạn thanh toán
               </Text>
-            </Box>
-
-            <Box justifyContent="flex-end">
-              <Box
-                borderColor="#DDD"
-                borderWidth={1}
-                color="#F2F2F2"
-                paddingVertical={2}
-                paddingHorizontal={10}
-                middle
-                center
-                row
-                radius={20}
-                style={{gap: 5}}>
-                <ClockOutlineSvg width={20} height={20} color="grey" />
-                <Text size={size.m} color={'black'} textAlign="right">
-                  {dueDate}
-                </Text>
-              </Box>
             </Box>
           </Box>
         </Box>
@@ -152,7 +135,8 @@ export const Receipt: React.FC<ReceiptProps> = ({
             </Text>
             {/* Format amount of money with dots */}
             <Text size={size.l} color={'black'} weight="bold">
-              {amount.toLocaleString().replaceAll(',', '.')} VNĐ
+              {formatMoney(receipt.thanh_toan[0].tong_tien)}
+              VNĐ
             </Text>
           </Box>
           <TouchableOpacity
@@ -163,7 +147,8 @@ export const Receipt: React.FC<ReceiptProps> = ({
               borderRadius: 5,
               alignItems: 'center',
               justifyContent: 'center',
-            }}>
+            }}
+            onPress={navigateToTransaction}>
             <Text
               size={size.l}
               weight="bold"

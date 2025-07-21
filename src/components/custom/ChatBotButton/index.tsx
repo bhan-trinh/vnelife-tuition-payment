@@ -1,6 +1,7 @@
 import ChatBotSvg from '@src/assets/svgs/ChatBotSvg';
 import {Box, LinearGradient} from '@src/components/core';
 import {StyleSheet, TouchableOpacity} from 'react-native';
+import {theme} from '@src/assets/colors/theme';
 
 export const ChatBotButton = () => {
   return (
@@ -19,8 +20,12 @@ export const ChatBotButton = () => {
             <LinearGradient
               angle={-45}
               colorList={[
-                {color: '#1274FE', offset: '0%', opacity: '0.3'},
-                {color: '#10C8CB', offset: '100%', opacity: '0.3'},
+                {color: theme.colors.highlight1, offset: '0%', opacity: '0.3'},
+                {
+                  color: theme.colors.highlight2,
+                  offset: '100%',
+                  opacity: '0.3',
+                },
               ]}
             />
           </Box>
@@ -38,8 +43,12 @@ export const ChatBotButton = () => {
             <LinearGradient
               angle={-45}
               colorList={[
-                {color: '#1274FE', offset: '0%', opacity: '0.5'},
-                {color: '#10C8CB', offset: '100%', opacity: '0.5'},
+                {color: theme.colors.highlight1, offset: '0%', opacity: '0.5'},
+                {
+                  color: theme.colors.highlight2,
+                  offset: '100%',
+                  opacity: '0.5',
+                },
               ]}
             />
           </Box>
@@ -57,8 +66,8 @@ export const ChatBotButton = () => {
             <LinearGradient
               angle={-45}
               colorList={[
-                {color: '#1274FE', offset: '10%', opacity: '1'},
-                {color: '#10C8CB', offset: '100%', opacity: '1'},
+                {color: theme.colors.highlight1, offset: '10%', opacity: '1'},
+                {color: theme.colors.highlight2, offset: '100%', opacity: '1'},
               ]}
             />
           </Box>

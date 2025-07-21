@@ -1,41 +1,32 @@
 import {size} from '@src/common/styles/size';
 import {Box, Text} from '@src/components/core';
+import {ReactNode} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 
-export const IconBoxSingle = ({icon, notif, title}) => {
+type IconBoxSingleProps = {
+  icon: ReactNode;
+  width?: number;
+  height?: number;
+  elevation?: number;
+};
+
+export const IconBoxSingle = ({
+  icon,
+  width,
+  height,
+  elevation,
+}: IconBoxSingleProps) => {
   return (
-    <Box center>
-      <TouchableOpacity style={styles.servicesButton}>{icon}</TouchableOpacity>
-      {notif && (
-        <Box
-          color="#C10800"
-          position="absolute"
-          right={16}
-          top={0}
-          width={18}
-          height={18}
-          middle
-          center
-          radius={10}>
-          <Text size={size.xs} weight="bold" color="white">
-            {notif}
-          </Text>
-        </Box>
-      )}
-      <Text size={size.m} textAlign="center">
-        {title}
-      </Text>
+    <Box
+      elevation={elevation ? elevation : 0}
+      radius={12}
+      color="white"
+      center
+      middle
+      width={width ? width : 48}
+      height={height ? height : 48}
+      overflow="hidden">
+      {icon}
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  servicesButton: {
-    borderRadius: 45,
-    backgroundColor: '#F2F2F2',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 56,
-    height: 56,
-  },
-});
