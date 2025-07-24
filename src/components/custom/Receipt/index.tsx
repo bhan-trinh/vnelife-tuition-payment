@@ -47,7 +47,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
             <IconBoxSingle
               icon={
                 tuitionServiceImages[
-                  receipt.dich_vu as keyof typeof tuitionServiceImages
+                  receipt.dich_vu.toLowerCase() as keyof typeof tuitionServiceImages
                 ]
               }
             />
@@ -79,7 +79,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
           borderColor={'#00000000'}
           borderWidth={1}>
           <Box row alignItems="center">
-            <Box flex={1}>
+            <Box>
               <Text size={size.m} color={'grey'}>
                 Tên học sinh
               </Text>
@@ -92,7 +92,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
           </Box>
 
           <Box row alignItems="center">
-            <Box flex={1}>
+            <Box>
               <Text size={size.m} color={'grey'}>
                 Mã định danh
               </Text>
@@ -104,10 +104,15 @@ export const Receipt: React.FC<ReceiptProps> = ({
             </Box>
           </Box>
 
-          <Box row alignItems="center" borderColor={'black'}>
-            <Box flex={1}>
+          <Box row alignItems="flex-start" borderColor={'black'}>
+            <Box>
               <Text size={size.m} color={'grey'}>
-                Hạn thanh toán
+                Tên trường
+              </Text>
+            </Box>
+            <Box flex={1}>
+              <Text size={size.l} color={'black'} textAlign="right">
+                {receipt.hoc_sinh_info.ten_truong}
               </Text>
             </Box>
           </Box>

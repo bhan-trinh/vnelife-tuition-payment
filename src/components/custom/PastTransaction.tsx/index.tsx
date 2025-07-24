@@ -18,23 +18,19 @@ export const PastTransaction = () => {
       borderBottomColor="grey">
       <IconBoxSingle icon={tuitionServiceImages.hocmai} title="" />
       <Box flex={1} gap={4}>
-        <Text size={size.xl} color={'black'} weight="bold" width={'70%'}>
+        <Text size={size.xl} color={'black'} weight="bold">
           Thanh toán tiền học (10/2025)
         </Text>
-        <Box row alignItems="flex-end">
+        <Box>
           <Text size={size.m} color={'grey'}>
             09/10/2025 09:00:00
           </Text>
+        </Box>
 
-          <Box flex={1} justifyContent="flex-end">
-            <Text
-              size={size.l}
-              color={theme.colors.primary}
-              textAlign="right"
-              weight="bold">
-              -10.000.000 VNĐ
-            </Text>
-          </Box>
+        <Box>
+          <Text size={size.l} color={theme.colors.primary} weight="bold">
+            -10.000.000 VNĐ
+          </Text>
         </Box>
       </Box>
     </Box>

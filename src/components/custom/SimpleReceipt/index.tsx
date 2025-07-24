@@ -31,11 +31,11 @@ export const SimpleReceipt: React.FC<ReceiptProps> = ({
         <IconBoxSingle
           icon={
             tuitionServiceImages[
-              receipt.dich_vu as keyof typeof tuitionServiceImages
+              receipt.dich_vu.toLowerCase() as keyof typeof tuitionServiceImages
             ]
           }
         />
-        <Box width={'45%'}>
+        <Box flex={1}>
           <Text size={size.m} color={'black'} weight="bold">
             {receipt.thanh_toan[0].noi_dung}
           </Text>
@@ -47,7 +47,7 @@ export const SimpleReceipt: React.FC<ReceiptProps> = ({
             {receipt.hoc_sinh_info.lop_hoc_id}
           </Text>
         </Box>
-        <Box width={'35%'}>
+        <Box>
           {/* Format amount of money with dots */}
           <Text size={size.l} color={'black'} weight="bold">
             {formatMoney(receipt.thanh_toan[0].tong_tien)} đ

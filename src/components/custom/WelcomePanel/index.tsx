@@ -4,6 +4,7 @@ import {StyleSheet} from 'react-native';
 import {WalletSvg} from '@src/assets/svgs/WalletSvg';
 import {size} from '@src/common/styles/size';
 import {theme} from '@src/assets/colors/theme';
+import {BookSvg} from '@src/assets/svgs/BookSvg';
 
 export const WelcomePanel = () => {
   return (
@@ -13,7 +14,7 @@ export const WelcomePanel = () => {
         xml={<WalletSvg width={30} height={30} color="white" />}
       /> */}
       <Box radius={8} padding={8} overflow="hidden">
-        <WalletSvg width={30} height={30} color="white" />
+        <BookSvg width={30} height={30} color="white" />
 
         <Box style={StyleSheet.absoluteFillObject} zIndex={-1}>
           <LinearGradient
@@ -30,7 +31,7 @@ export const WelcomePanel = () => {
           Chào mừng bạn đến với
         </Text>
         <Text size={size.xl} weight="bold" style={[styles.normalText]}>
-          Thanh toán trực tuyến
+          Thanh toán học phí
         </Text>
       </Box>
     </Box>

@@ -43,7 +43,7 @@ export const ReceiptInfoBox = ({
             onPress={toggleSelected}
             color={theme.colors.secondary}
           />
-          <Box gap={4} width={'50%'}>
+          <Box gap={4} flex={1}>
             <Text size={size.l} color={'black'} weight="bold">
               {receiptInfo.noi_dung}
             </Text>
@@ -52,7 +52,7 @@ export const ReceiptInfoBox = ({
             </Text>
           </Box>
 
-          <Box flex={1} alignItems="flex-end" padding={8}>
+          <Box alignItems="flex-end" padding={8}>
             <TouchableOpacity onPress={toggleDetail}>
               <Text size={size.l} color={theme.colors.secondary}>
                 Chi tiết {'>'}

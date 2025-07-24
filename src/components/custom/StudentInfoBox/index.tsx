@@ -15,8 +15,8 @@ export const StudentInfoBox = ({infoHs}: StudentInfoBoxProps) => {
           Thông tin học sinh
         </Text>
       </Box>
-      <Box row alignItems="center">
-        <Box flex={1}>
+      <Box row gap={10}>
+        <Box>
           <Text size={size.m} color={'grey'}>
             Tên trường
           </Text>
@@ -27,8 +27,8 @@ export const StudentInfoBox = ({infoHs}: StudentInfoBoxProps) => {
           </Text>
         </Box>
       </Box>
-      <Box row alignItems="center">
-        <Box flex={1}>
+      <Box row gap={10}>
+        <Box>
           <Text size={size.m} color={'grey'}>
             Mã định danh
           </Text>
@@ -39,8 +39,8 @@ export const StudentInfoBox = ({infoHs}: StudentInfoBoxProps) => {
           </Text>
         </Box>
       </Box>
-      <Box row alignItems="center">
-        <Box flex={1}>
+      <Box row gap={10}>
+        <Box>
           <Text size={size.m} color={'grey'}>
             Tên học sinh
           </Text>
@@ -51,8 +51,8 @@ export const StudentInfoBox = ({infoHs}: StudentInfoBoxProps) => {
           </Text>
         </Box>
       </Box>
-      <Box row alignItems="center">
-        <Box flex={1}>
+      <Box row gap={10}>
+        <Box>
           <Text size={size.m} color={'grey'}>
             Tên lớp
           </Text>

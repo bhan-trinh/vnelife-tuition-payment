@@ -40,7 +40,7 @@ const TransactionScreen = React.forwardRef<
     var total = 0;
     for (var billIndex in receipt.thanh_toan) {
       if (billsSelected[billIndex]) {
-        total += parseInt(receipt.thanh_toan[billIndex].tong_tien);
+        total += receipt.thanh_toan[billIndex].tong_tien;
       }
     }
     return total;
@@ -60,7 +60,7 @@ const TransactionScreen = React.forwardRef<
             color="transparent"
             style={{gap: 15}}>
             <TouchableOpacity
-              onPress={() => navigation.navigate(ROUTER_ROOT.BOTTOM_TABS)}>
+              onPress={() => navigation.navigate(ROUTER_ROOT.RECEIPT_SCREEN)}>
               <Text size={size.xl} color={'black'} weight="bold">
                 {'<'} Thanh toán học phí
               </Text>
@@ -73,7 +73,7 @@ const TransactionScreen = React.forwardRef<
               <IconBoxSingle
                 icon={
                   tuitionServiceImages[
-                    receipt.dich_vu as keyof typeof tuitionServiceImages
+                    receipt.dich_vu.toLowerCase() as keyof typeof tuitionServiceImages
                   ]
                 }
               />
