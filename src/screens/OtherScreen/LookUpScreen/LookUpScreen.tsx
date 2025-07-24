@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {RootStackParamList, RootStackScreenProps} from '@src/navigation/types';
 import {Box, Input, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -20,6 +20,7 @@ import {Background} from '@src/components/custom/Background/Background';
 import {SERVER_URL} from '../../../../config';
 import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {Modal, Portal} from 'react-native-paper';
 
 export interface LookUpScreenProps
   extends RootStackScreenProps<'LOOKUP_SCREEN'> {}
@@ -31,6 +32,9 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
     const {height} = useWindowDimensions();
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
     const [searchWord, setSearchWord] = useState('');
+    const [visible, setVisible] = useState(false);
+    const toggleWarning = () => setVisible(!visible);
+    const warningText = useRef('Hệ thống đã xảy ra lỗi, vui lòng thử lại sau');
     return (
       <Box flex={1} color="white">
         <Background>
@@ -105,11 +109,21 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
             }}
             onPress={async () => {
               console.log('connecting...');
-              const response = await getReceiptFromApiAsync();
-              console.log(response.thanh_toan);
-              navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
-                receipt: response,
-              });
+              try {
+                const response = await getReceiptFromApiAsync(searchWord);
+                navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
+                  receipt: response,
+                });
+              } catch (error) {
+                console.log(error);
+                warningText.current =
+                  'Hệ thống đã xảy ra lỗi, vui lòng thử lại sau';
+                if (error.includes('invalid number'))
+                  warningText.current = 'Mã định danh không hợp lệ';
+                if (searchWord === '')
+                  warningText.current = 'Xin hãy nhập mã định danh';
+                toggleWarning();
+              }
             }}>
             <Text
               size={size.l}
@@ -120,6 +134,21 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
             </Text>
           </TouchableOpacity>
         </Box>
+        <Portal>
+          <Modal
+            visible={visible}
+            onDismiss={toggleWarning}
+            contentContainerStyle={{
+              backgroundColor: 'white',
+              padding: 20,
+              margin: 20,
+              borderRadius: 30,
+              alignItems: 'center',
+              gap: 6,
+            }}>
+            <Text size={size.xl}>{warningText.current}</Text>
+          </Modal>
+        </Portal>
       </Box>
     );
   },
@@ -127,14 +156,13 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
 
 export default LookUpScreen;
 
-const getReceiptFromApiAsync = async (): Promise<ReceiptItem> => {
+const getReceiptFromApiAsync = async (billId: string): Promise<ReceiptItem> => {
   try {
-    const response = await fetch(`${SERVER_URL}/getBill`);
-    const json = await response.json();
-    var billDetail = json.BILL_DETAIL;
-    const r: ReceiptItem = JSON.parse(billDetail);
-    r.dich_vu = 'vnedu';
-    return r;
+    // Look up by bill id
+    const response = await fetch(`${SERVER_URL}/receipt/full/bill/${billId}`);
+    const receipt: ReceiptItem = await response.json();
+    console.log(receipt);
+    return receipt;
   } catch (error) {
     throw `Error while fetching from API: ${error}`;
   }
