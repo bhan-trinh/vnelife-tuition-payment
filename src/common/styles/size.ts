@@ -13,5 +13,5 @@ export const size2 = {
   m: 18,
   l: 20,
   xl: 24,
-  xxl: 20,
+  xxl: 28,
 };
