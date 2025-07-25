@@ -2,8 +2,8 @@ import React from 'react';
 import {Box, LinearGradient, Text} from '@src/components/core';
 import {StyleSheet} from 'react-native';
 import {WalletSvg} from '@src/assets/svgs/WalletSvg';
-import {size} from '@src/common/styles/size';
-import {theme} from '@src/assets/colors/theme';
+import {size} from '@src/utils/styles/size';
+import {theme} from '@src/assets/themes/theme';
 import {BookSvg} from '@src/assets/svgs/BookSvg';
 
 export const WelcomePanel = () => {

@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {Box, Text} from '@src/components/core';
 import {TouchableOpacity} from 'react-native';
-import {size} from '@src/common/styles/size';
-import {theme} from '@src/assets/colors/theme';
+import {size} from '@src/utils/styles/size';
+import {theme} from '@src/assets/themes/theme';
 import {Portal, RadioButton} from 'react-native-paper';
 import {ChiTietHoaDon} from '@src/components/core/Utils';
-import {HoaDon} from '@src/data/ReceiptData/HoaDon';
+import {HoaDon} from '@src/data/receipt/HoaDon';
 import {ReceiptDetailBox} from '../ReceiptDetailBox';
-import {formatMoney} from '@src/common/func/formatMoney';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
 type ReceiptInfoBoxProps = {
   receiptInfo: HoaDon;

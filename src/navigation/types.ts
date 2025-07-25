@@ -1,5 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
+import {ReceiptItem} from '@src/data/receipt/ReceiptItem';
 
 export type RootStackParamList = {
   HOME_SCREEN: undefined;

@@ -3,10 +3,10 @@ import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useWindowDimensions} from 'react-native';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {Background} from '@src/components/custom/Background/Background';
 import {ServicePanel} from '@src/components/custom/ServicePanel';
-import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
+import {servicesList} from '@src/data/service/servicesList';
 
 export interface ServiceScreenProps
   extends RootStackScreenProps<'SERVICE_SCREEN'> {}

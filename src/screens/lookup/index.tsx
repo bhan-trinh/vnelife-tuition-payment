@@ -8,17 +8,17 @@ import {
   useWindowDimensions,
 } from 'react-native';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
-import {size} from '@src/common/styles/size';
-import {PastTransaction} from '@src/components/custom/PastTransaction.tsx';
+import {size} from '@src/utils/styles/size';
+import {PastTransaction} from '@src/components/custom/PastTransaction';
 import {IconBox} from '@src/components/custom/IconBox';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {IconBoxSingle} from '@src/components/custom/IconBoxSingle';
 import {useNavigation, useTheme} from '@react-navigation/native';
 import {ROUTER_ROOT} from '@src/navigation/routers';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 import {Background} from '@src/components/custom/Background/Background';
 import {SERVER_URL} from '../../../../config';
-import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
+import {ReceiptItem} from '@src/data/receipt/ReceiptItem';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Modal, Portal} from 'react-native-paper';
 

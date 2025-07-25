@@ -1,12 +1,12 @@
 import {CarOutlineSvg} from '@src/assets/svgs/CarOutlineSvg';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {Box, Text} from '@src/components/core';
 import React from 'react';
 import {IconBox} from '../IconBox';
 import {IconBoxSingle} from '../IconBoxSingle';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
-import {tuitionServiceList} from '@src/data/TuitionServiceData/tuitionServiceList';
+import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
 
 export const PastTransaction = () => {
   return (

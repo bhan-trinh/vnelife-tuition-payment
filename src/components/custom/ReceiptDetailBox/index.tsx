@@ -1,9 +1,9 @@
 import {Modal} from 'react-native-paper';
 import {Box, Text} from '@src/components/core';
-import {theme} from '@src/assets/colors/theme';
-import {size} from '@src/common/styles/size';
-import {ChiTietHoaDon} from '@src/data/ReceiptData/ChiTietHoaDon';
-import {formatMoney} from '@src/common/func/formatMoney';
+import {theme} from '@src/assets/themes/theme';
+import {size} from '@src/utils/styles/size';
+import {ChiTietHoaDon} from '@src/data/receipt/ChiTietHoaDon';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
 type ReceiptDetailBoxProps = {
   receiptName: string;

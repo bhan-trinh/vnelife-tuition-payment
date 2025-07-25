@@ -3,10 +3,10 @@ import {RootStackParamList} from '@src/navigation/types';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {StatusBar} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {BottomTabBar} from './BottomTabBar';
-import TransactionScreen from '@src/screens/OtherScreen/TransactionScreen/TransactionScreen';
-import LookUpScreen from '@src/screens/OtherScreen/LookUpScreen/LookUpScreen';
-import ReceiptScreen from '@src/screens/OtherScreen/ReceiptScreen';
+import {BottomTabBar} from '../BottomTabBar';
+import TransactionScreen from '@src/screens/transaction';
+import LookUpScreen from '@src/screens/lookup';
+import ReceiptScreen from '@src/screens/receipt';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

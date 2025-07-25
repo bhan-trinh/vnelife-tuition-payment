@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
 import {Box} from '@src/components/core';
 import {LinearGradient} from '@src/components/core';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 
 interface GradientButtonProps {
   icon?: string;

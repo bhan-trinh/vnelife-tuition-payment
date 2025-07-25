@@ -6,14 +6,14 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {ServicePanel} from '@src/components/custom/ServicePanel';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
 import {ReceiptPanel} from '@src/components/custom/ReceiptPanel';
-import {receiptList} from '@src/data/ReceiptData/receiptList';
-import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
+import {receiptList} from '@src/data/receipt/receiptList';
+import {servicesList} from '@src/data/service/servicesList';
 import ChatBotSvg from '@src/assets/svgs/ChatBotSvg';
 import {ChatBotButton} from '@src/components/custom/ChatBotButton';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {Background} from '@src/components/custom/Background/Background';
-import {tuitionServiceList} from '@src/data/TuitionServiceData/tuitionServiceList';
-import {size} from '@src/common/styles/size';
+import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
+import {size} from '@src/utils/styles/size';
 import {IconBox} from '@src/components/custom/IconBox';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 

@@ -20,19 +20,7 @@ const App = (props: any) => {
   return (
     <KeyboardProvider>
       <SafeAreaProvider>
-        <PaperProvider
-          theme={appTheme}
-          settings={
-            {
-              // icon: props => (
-              //   <Icon
-              //     name={props.name as any}
-              //     size={props.size}
-              //     color={props.color}
-              //   />
-              // ),
-            }
-          }>
+        <PaperProvider>
           <GestureHandlerRootView>
             <Host>
               <Navigator />

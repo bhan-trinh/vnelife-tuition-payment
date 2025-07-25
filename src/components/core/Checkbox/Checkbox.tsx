@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {useCheckboxGroup} from './CheckboxGroup';
 import {StyleSheet} from 'react-native';
-import defaultStyles from '@src/common/styles';
+import defaultStyles from '@src/utils/styles';
 
 export type CheckboxProps<T = any> = {
   value: T;

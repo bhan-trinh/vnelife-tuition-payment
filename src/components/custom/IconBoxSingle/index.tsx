@@ -1,4 +1,4 @@
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {Box, Text} from '@src/components/core';
 import {ReactNode} from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';

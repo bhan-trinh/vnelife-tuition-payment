@@ -1,5 +1,5 @@
 import {CarOutlineSvg} from '@src/assets/svgs/CarOutlineSvg';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {Box, Text} from '@src/components/core';
 import React, {ReactNode} from 'react';
 import {IconBox} from '../IconBox';
@@ -7,9 +7,9 @@ import {IconBoxSingle} from '../IconBoxSingle';
 import {TouchableOpacity} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
-import {theme} from '@src/assets/colors/theme';
-import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
-import {formatMoney} from '@src/common/func/formatMoney';
+import {theme} from '@src/assets/themes/theme';
+import {ReceiptItem} from '@src/data/receipt/ReceiptItem';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
 interface ReceiptProps {
   receipt: ReceiptItem;

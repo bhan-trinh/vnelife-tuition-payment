@@ -1,7 +1,7 @@
 import ChatBotSvg from '@src/assets/svgs/ChatBotSvg';
 import {Box, LinearGradient} from '@src/components/core';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 
 export const ChatBotButton = () => {
   return (

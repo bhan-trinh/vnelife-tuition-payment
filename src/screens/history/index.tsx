@@ -4,8 +4,8 @@ import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {ImageBackground, useWindowDimensions} from 'react-native';
 import {WelcomePanel} from '@src/components/custom/WelcomePanel';
-import {size} from '@src/common/styles/size';
-import {PastTransaction} from '@src/components/custom/PastTransaction.tsx';
+import {size} from '@src/utils/styles/size';
+import {PastTransaction} from '@src/components/custom/PastTransaction';
 import {Background} from '@src/components/custom/Background/Background';
 
 export interface HistoryScreenProps

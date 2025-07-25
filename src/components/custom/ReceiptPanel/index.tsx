@@ -5,12 +5,12 @@ import {Box, Text} from '@src/components/core';
 import {useTheme} from 'react-native-paper';
 import {ChevronRightSvg} from '@src/assets/svgs/ChevronRight';
 // import Icon from '@react-native-vector-icons/material-design-icons';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {useNavigation} from '@react-navigation/native';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '@src/navigation/types';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 
 interface ReceiptPaneProps {
   receiptList: Array<any>;

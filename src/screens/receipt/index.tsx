@@ -3,9 +3,9 @@ import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {TouchableOpacity, useWindowDimensions} from 'react-native';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {SimpleReceipt} from '@src/components/custom/SimpleReceipt';
-import {receiptList} from '@src/data/ReceiptData/receiptList';
+import {receiptList} from '@src/data/receipt/receiptList';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {Background} from '@src/components/custom/Background/Background';
 

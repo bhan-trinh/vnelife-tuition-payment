@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Text} from '@src/components/core';
-import {size} from '@src/common/styles/size';
-import {InfoHs} from '@src/data/ReceiptData/InfoHs';
+import {size} from '@src/utils/styles/size';
+import {InfoHs} from '@src/data/receipt/InfoHs';
 
 type StudentInfoBoxProps = {
   infoHs: InfoHs;

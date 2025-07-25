@@ -9,14 +9,14 @@ import {
 import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
 import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {IconBoxSingle} from '../IconBoxSingle';
-import {servicesList} from '@src/data/ServiceButtonsData/servicesList';
-import {tuitionServiceList} from '@src/data/TuitionServiceData/tuitionServiceList';
+import {servicesList} from '@src/data/service/servicesList';
+import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
-import {theme} from '@src/assets/colors/theme';
-import {ReceiptItem} from '@src/data/ReceiptData/ReceiptItem';
-import {formatMoney} from '@src/common/func/formatMoney';
+import {theme} from '@src/assets/themes/theme';
+import {ReceiptItem} from '@src/data/receipt/ReceiptItem';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
 interface ReceiptProps {
   receipt: ReceiptItem;

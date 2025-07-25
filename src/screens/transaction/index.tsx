@@ -3,15 +3,15 @@ import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
 import {TouchableOpacity, useWindowDimensions} from 'react-native';
-import {size} from '@src/common/styles/size';
+import {size} from '@src/utils/styles/size';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {IconBoxSingle} from '@src/components/custom/IconBoxSingle';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
-import {theme} from '@src/assets/colors/theme';
+import {theme} from '@src/assets/themes/theme';
 import {Background} from '@src/components/custom/Background/Background';
 import {ReceiptInfoBox} from '@src/components/custom/ReceiptInfoBox';
 import {StudentInfoBox} from '@src/components/custom/StudentInfoBox';
-import {formatMoney} from '@src/common/func/formatMoney';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
 export interface TransactionScreenProps
   extends RootStackScreenProps<'TRANSACTION_SCREEN'> {}
