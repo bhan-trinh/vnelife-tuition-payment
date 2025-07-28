@@ -19,7 +19,6 @@ const RootStack = () => {
         backgroundColor={'transparent'}
       />
       <Stack.Navigator
-        initialRouteName={ROUTER_ROOT.BOTTOM_TABS}
         screenOptions={{
           animation: 'default',
           headerShown: false,
@@ -41,15 +40,6 @@ const RootStack = () => {
           name={ROUTER_ROOT.RECEIPT_SCREEN}
           component={ReceiptScreen}
         />
-        {/* <Stack.Screen name={ROUTER_ROOT.HOME_SCREEN} component={HomeScreen} />
-        <Stack.Screen
-          name={ROUTER_ROOT.RECEIPT_SCREEN}
-          component={ReceiptScreen}
-        />
-        <Stack.Screen
-          name={ROUTER_ROOT.HISTORY_SCREEN}
-          component={HistoryScreen}
-        /> */}
       </Stack.Navigator>
     </>
   );

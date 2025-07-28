@@ -8,8 +8,8 @@ import {ReceiptSvg} from '@src/assets/svgs/ReceiptSvg';
 import {HistorySvg} from '@src/assets/svgs/HistorySvg';
 import {HouseSvg} from '@src/assets/svgs/HouseSvg';
 import {theme} from '@src/assets/themes/theme';
-import ServiceScreen from '@src/screens/service';
 import {ReceiptSearchSvg} from '@src/assets/svgs/ReceiptSearchSvg';
+import {ServiceScreen} from '@src/screens/service';
 
 const Tab = createBottomTabNavigator();
 

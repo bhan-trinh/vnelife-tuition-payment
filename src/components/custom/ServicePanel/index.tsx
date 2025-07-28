@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import {Box, Input, Text} from '@src/components/core';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import {useTheme} from 'react-native-paper';
 // import Icon from '@react-native-vector-icons/material-design-icons';
 import {size} from '@src/utils/styles/size';
 import {IconBox} from '../IconBox';
@@ -11,8 +9,6 @@ import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {LookUpScreenProps} from '@src/screens/OtherScreen/LookUpScreen/LookUpScreen';
-import {HomeScreenProps} from '@src/screens/home';
 import {RootStackParamList} from '@src/navigation/types';
 
 export const ServicePanel = ({servicesList}) => {

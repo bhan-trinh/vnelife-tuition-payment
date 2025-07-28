@@ -9,6 +9,7 @@ export type RootStackParamList = {
   TRANSACTION_SCREEN: {receipt: ReceiptItem};
   LOOKUP_SCREEN: {service: string | undefined};
   SERVICE_SCREEN: undefined;
+  LOGIN_SCREEN: undefined;
 };
 
 export type RoutesType = RootStackParamList;

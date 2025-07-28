@@ -9,6 +9,7 @@ import {PaperProvider} from 'react-native-paper';
 import LoadingPortal from '@src/components/custom/LoadingPotal';
 import {EventsBusServiceManager} from 'vnpt-mini-api';
 import {UserProvider, useUser} from '@src/contexts/user';
+import {getToken} from '@src/api/core';
 
 const App = (props: any) => {
   if (__DEV__) {
@@ -17,10 +18,6 @@ const App = (props: any) => {
     console.log('Props get from host app:', props);
     EventsBusServiceManager.setInstance(props.service);
   }
-
-  var curUser = EventsBusServiceManager.getInstance().getUserData();
-  const {user, login, logout} = useUser();
-  login(curUser);
 
   return (
     <KeyboardProvider>

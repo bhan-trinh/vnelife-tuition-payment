@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {Box, Text} from '@src/components/core';
 import {
   ImageBackground,
@@ -6,13 +6,9 @@ import {
   TouchableOpacity,
   useWindowDimensions,
 } from 'react-native';
-import {useTheme} from 'react-native-paper';
 import Svg, {Line} from 'react-native-svg';
-import {ClockOutlineSvg} from '@src/assets/svgs/ClockOutlineSvg';
 import {size} from '@src/utils/styles/size';
 import {IconBoxSingle} from '../IconBoxSingle';
-import {servicesList} from '@src/data/service/servicesList';
-import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {theme} from '@src/assets/themes/theme';
 import {ReceiptItem} from '@src/data/receipt/ReceiptItem';

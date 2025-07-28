@@ -12,4 +12,5 @@ export const ROUTER_ROOT: Entries<RootStackParamList> = {
   TRANSACTION_SCREEN: 'Thanh toán',
   LOOKUP_SCREEN: 'Tra cứu dịch vụ',
   SERVICE_SCREEN: 'Tra cứu',
+  LOGIN_SCREEN: 'Đăng nhập',
 };
