@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {KeyboardProvider} from 'react-native-keyboard-controller';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -7,8 +7,8 @@ import Navigator from '@src/navigation';
 // import Icon from '@react-native-vector-icons/material-design-icons';
 import {PaperProvider} from 'react-native-paper';
 import LoadingPortal from '@src/components/custom/LoadingPotal';
-import {appTheme} from '@src/components/core/Theme/theme';
 import {EventsBusServiceManager} from 'vnpt-mini-api';
+import {UserProvider, useUser} from '@src/contexts/user';
 
 const App = (props: any) => {
   if (__DEV__) {
@@ -17,13 +17,20 @@ const App = (props: any) => {
     console.log('Props get from host app:', props);
     EventsBusServiceManager.setInstance(props.service);
   }
+
+  var curUser = EventsBusServiceManager.getInstance().getUserData();
+  const {user, login, logout} = useUser();
+  login(curUser);
+
   return (
     <KeyboardProvider>
       <SafeAreaProvider>
         <PaperProvider>
           <GestureHandlerRootView>
             <Host>
-              <Navigator />
+              <UserProvider>
+                <Navigator />
+              </UserProvider>
             </Host>
             <LoadingPortal />
           </GestureHandlerRootView>
