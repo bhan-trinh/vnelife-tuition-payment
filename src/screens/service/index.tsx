@@ -31,7 +31,7 @@ export const ServiceScreen = React.forwardRef<
             justifyContent="space-around"
             color="transparent"
             style={{gap: 15}}>
-            <ServicePanel servicesList={tuitionServiceList} />
+            <ServicePanel />
           </Box>
         </ScrollView>
       </Background>

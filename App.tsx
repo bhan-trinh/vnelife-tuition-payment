@@ -9,7 +9,8 @@ import {PaperProvider} from 'react-native-paper';
 import LoadingPortal from '@src/components/custom/LoadingPotal';
 import {EventsBusServiceManager} from 'vnpt-mini-api';
 import {UserProvider, useUser} from '@src/contexts/user';
-import {getToken} from '@src/api/core';
+import {getToken} from '@src/api/api-hp/core';
+import {ReceiptProvider} from '@src/contexts/receipt';
 
 const App = (props: any) => {
   if (__DEV__) {
@@ -25,9 +26,9 @@ const App = (props: any) => {
         <PaperProvider>
           <GestureHandlerRootView>
             <Host>
-              <UserProvider>
+              <ReceiptProvider>
                 <Navigator />
-              </UserProvider>
+              </ReceiptProvider>
             </Host>
             <LoadingPortal />
           </GestureHandlerRootView>

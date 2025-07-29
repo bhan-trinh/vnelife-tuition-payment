@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -8,6 +8,9 @@ import {SimpleReceipt} from '@src/components/custom/SimpleReceipt';
 import {receiptList} from '@src/data/receipt/receiptList';
 import {ROUTER_ROOT} from '@src/navigation/routers';
 import {Background} from '@src/components/custom/Background/Background';
+import {ReceiptContext} from '@src/contexts/receipt';
+import {useFocusEffect} from '@react-navigation/native';
+import {fetchAllReceiptsByUserId} from '@src/api/api-hp/core';
 
 export interface ReceiptScreenProps
   extends RootStackScreenProps<'RECEIPT_SCREEN'> {}
@@ -17,6 +20,23 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
     const {navigation} = props;
     const {height} = useWindowDimensions();
     const [searchWord, setSearchWord] = useState('');
+    const {receipts, setReceipts} = useContext(ReceiptContext);
+
+    useFocusEffect(
+      React.useCallback(() => {
+        const fetchReceipts = async () => {
+          try {
+            const res = await fetchAllReceiptsByUserId();
+            setReceipts(res);
+          } catch (err) {
+            console.log(err);
+          }
+        };
+        fetchReceipts();
+
+        return () => {};
+      }, [])
+    );
     return (
       <Box flex={1} color="white">
         <Background>
@@ -37,7 +57,7 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
                 </Text>
               </TouchableOpacity>
               <Box gap={20}>
-                {receiptList.map((receipt, index) => (
+                {receipts.map((receipt, index) => (
                   <SimpleReceipt
                     key={index}
                     receipt={receipt}
@@ -54,7 +74,7 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
         </Background>
       </Box>
     );
-  },
+  }
 );
 
 export default React.memo(ReceiptScreen);

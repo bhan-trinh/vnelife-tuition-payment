@@ -10,8 +10,9 @@ import {ROUTER_ROOT} from '@src/navigation/routers';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '@src/navigation/types';
+import {addService} from '@src/api/async-storage';
 
-export const ServicePanel = ({servicesList}) => {
+export const ServicePanel = ({}) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const [searchWord, setSearchWord] = useState('');
@@ -38,7 +39,9 @@ export const ServicePanel = ({servicesList}) => {
 
         <Box>
           <Box flex={1} row wrap="wrap">
-            {tuitionServiceList.map((element, index: number) => {
+            {Object.keys(tuitionServiceList).map((key, index: number) => {
+              var element =
+                tuitionServiceList[key as keyof typeof tuitionServiceList];
               const searchWordCased = searchWord.toLowerCase();
               if (
                 removeTone(element.title)
@@ -55,11 +58,14 @@ export const ServicePanel = ({servicesList}) => {
                       ]
                     }
                     title={element.title}
-                    onPress={() =>
+                    onPress={() => {
                       navigation.navigate(ROUTER_ROOT.LOOKUP_SCREEN, {
                         service: element.icon,
-                      })
-                    }
+                      });
+
+                      // Add service to recent searches in AsyncStorage
+                      addService(key);
+                    }}
                   />
                 );
               }
