@@ -152,7 +152,7 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
         </Portal>
       </Box>
     );
-  },
+  }
 );
 
 export default LookUpScreen;
@@ -161,7 +161,6 @@ const getReceiptFromApiAsync = async (billId: string): Promise<ReceiptItem> => {
   try {
     // Look up by bill id
     const response: ReceiptItem = await fetchReceiptById(billId);
-    console.log(response);
     return response;
   } catch (error) {
     throw `Error while fetching from API: ${error}`;

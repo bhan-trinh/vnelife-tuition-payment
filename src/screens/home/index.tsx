@@ -54,7 +54,6 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
         const fetchSearched = async () => {
           try {
             const res = await getData('searchedService');
-            console.log(res);
             const data = res ? res : [];
             setRecentSearch(data.reverse());
           } catch (err) {}
