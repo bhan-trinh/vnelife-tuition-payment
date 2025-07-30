@@ -16,65 +16,61 @@ export const ServicePanel = ({}) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const [searchWord, setSearchWord] = useState('');
-  try {
-    return (
-      <Box flex={5} gap={10}>
-        <Text size={size.xl} color={'black'} weight="bold">
-          Tất cả dịch vụ
-        </Text>
-        <Box
-          radius={45}
-          borderWidth={1}
-          borderColor="#CCC"
-          paddingHorizontal={14}
-          marginHorizontal={-8}>
-          <Input
-            placeholder="Tên dịch vụ"
-            size={size.m}
-            color="#999"
-            value={searchWord}
-            onChangeText={text => setSearchWord(text)}
-          />
-        </Box>
+  return (
+    <Box flex={5} gap={10}>
+      <Text size={size.xl} color={'black'} weight="bold">
+        Tất cả dịch vụ
+      </Text>
+      <Box
+        radius={45}
+        borderWidth={1}
+        borderColor="#CCC"
+        paddingHorizontal={14}
+        marginHorizontal={-8}>
+        <Input
+          placeholder="Tên dịch vụ"
+          size={size.m}
+          color="#999"
+          value={searchWord}
+          onChangeText={text => setSearchWord(text)}
+        />
+      </Box>
 
-        <Box>
-          <Box flex={1} row wrap="wrap">
-            {Object.keys(tuitionServiceList).map((key, index: number) => {
-              var element =
-                tuitionServiceList[key as keyof typeof tuitionServiceList];
-              const searchWordCased = searchWord.toLowerCase();
-              if (
-                removeTone(element.title)
-                  .toLowerCase()
-                  .includes(searchWordCased) ||
-                element.title.toLowerCase().includes(searchWordCased)
-              ) {
-                return (
-                  <IconBox
-                    key={index}
-                    icon={
-                      tuitionServiceImages[
-                        element.icon as keyof typeof tuitionServiceImages
-                      ]
-                    }
-                    title={element.title}
-                    onPress={() => {
-                      navigation.navigate(ROUTER_ROOT.LOOKUP_SCREEN, {
-                        service: element.icon,
-                      });
+      <Box>
+        <Box flex={1} row wrap="wrap">
+          {Object.keys(tuitionServiceList).map((key, index: number) => {
+            var element =
+              tuitionServiceList[key as keyof typeof tuitionServiceList];
+            const searchWordCased = searchWord.toLowerCase();
+            if (
+              removeTone(element.title)
+                .toLowerCase()
+                .includes(searchWordCased) ||
+              element.title.toLowerCase().includes(searchWordCased)
+            ) {
+              return (
+                <IconBox
+                  key={index}
+                  icon={
+                    tuitionServiceImages[
+                      element.icon as keyof typeof tuitionServiceImages
+                    ]
+                  }
+                  title={element.title}
+                  onPress={() => {
+                    navigation.navigate(ROUTER_ROOT.LOOKUP_SCREEN, {
+                      service: element.icon,
+                    });
 
-                      // Add service to recent searches in AsyncStorage
-                      addService(key);
-                    }}
-                  />
-                );
-              }
-            })}
-          </Box>
+                    // Add service to recent searches in AsyncStorage
+                    addService(key);
+                  }}
+                />
+              );
+            }
+          })}
         </Box>
       </Box>
-    );
-  } catch (error) {
-    console.log(error);
-  }
+    </Box>
+  );
 };

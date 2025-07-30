@@ -11,16 +11,13 @@ import {ROUTER_ROOT} from '@src/navigation/routers';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '@src/navigation/types';
 import {theme} from '@src/assets/themes/theme';
+import {AddReceipt} from '../AddReceipt';
 
 interface ReceiptPaneProps {
   receiptList: Array<any>;
-  navigation: any;
 }
 
-export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({
-  receiptList,
-  navigate,
-}) => {
+export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <>
@@ -48,29 +45,33 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({
           </TouchableOpacity>
         </Box>
       </Box>
-      <FlatList
-        horizontal
-        initialNumToRender={3}
-        pagingEnabled={true}
-        showsHorizontalScrollIndicator={false}
-        legacyImplementation={false}
-        data={receiptList}
-        // eslint-disable-next-line react/no-unstable-nested-components
-        ItemSeparatorComponent={() => <Box height="100%" width={5} />}
-        renderItem={receipt => {
-          return (
-            <Receipt
-              receipt={receipt.item}
-              navigateToTransaction={() =>
-                navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
-                  receipt: receipt.item,
-                })
-              }
-            />
-          );
-        }}
-        // style={{marginRight: "-5"}}
-      />
+      {receiptList.length ? (
+        <FlatList
+          horizontal
+          initialNumToRender={3}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}
+          legacyImplementation={false}
+          data={receiptList}
+          // eslint-disable-next-line react/no-unstable-nested-components
+          ItemSeparatorComponent={() => <Box height="100%" width={5} />}
+          renderItem={receipt => {
+            return (
+              <Receipt
+                receipt={receipt.item}
+                navigateToTransaction={() =>
+                  navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
+                    receipt: receipt.item,
+                  })
+                }
+              />
+            );
+          }}
+          // style={{marginRight: "-5"}}
+        />
+      ) : (
+        <AddReceipt />
+      )}
     </>
   );
 };

@@ -29,7 +29,7 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
             const res = await fetchAllReceiptsByUserId();
             setReceipts(res);
           } catch (err) {
-            console.log(err);
+            console.log(`Fetch Receipts Failed: ${err}`);
           }
         };
         fetchReceipts();

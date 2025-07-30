@@ -109,21 +109,25 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
               justifyContent: 'center',
             }}
             onPress={async () => {
-              console.log('connecting...');
+              if (searchWord === '') {
+                warningText.current = 'Xin hãy nhập mã định danh';
+                toggleWarning();
+                return;
+              }
               try {
                 const response = await getReceiptFromApiAsync(searchWord);
+                if (Object.keys(response).includes('error')) {
+                  warningText.current = response.error;
+                  toggleWarning();
+                  return;
+                }
                 navigation.navigate(ROUTER_ROOT.TRANSACTION_SCREEN, {
                   receipt: response,
                 });
               } catch (error) {
-                console.log(error);
+                console.log(`Look Up Receipt Failed: ${error}`);
                 warningText.current =
                   'Hệ thống đã xảy ra lỗi, vui lòng thử lại sau';
-                if (error.includes('invalid number'))
-                  warningText.current = 'Mã định danh không hợp lệ';
-                if (searchWord === '')
-                  warningText.current = 'Xin hãy nhập mã định danh';
-                toggleWarning();
               }
             }}>
             <Text
@@ -157,10 +161,10 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
 
 export default LookUpScreen;
 
-const getReceiptFromApiAsync = async (billId: string): Promise<ReceiptItem> => {
+const getReceiptFromApiAsync = async (billId: string): Promise<any> => {
   try {
     // Look up by bill id
-    const response: ReceiptItem = await fetchReceiptById(billId);
+    const response = await fetchReceiptById(billId);
     return response;
   } catch (error) {
     throw `Error while fetching from API: ${error}`;
