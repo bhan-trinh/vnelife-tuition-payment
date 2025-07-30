@@ -22,12 +22,12 @@ export const ReceiptPanel: React.FC<ReceiptPaneProps> = ({receiptList}) => {
   return (
     <>
       <Box row center>
-        <Box width="60%">
+        <Box flex={1}>
           <Text size={size.xl} weight="bold">
             Hóa đơn cần thanh toán
           </Text>
         </Box>
-        <Box width="40%">
+        <Box>
           <TouchableOpacity
             onPress={() => navigation.navigate(ROUTER_ROOT.RECEIPT_SCREEN)}>
             <Text
