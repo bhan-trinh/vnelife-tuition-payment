@@ -19,7 +19,6 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
   (props, _ref) => {
     const {navigation} = props;
     const {height} = useWindowDimensions();
-    const [searchWord, setSearchWord] = useState('');
     const {receipts, setReceipts} = useContext(ReceiptContext);
 
     useFocusEffect(
@@ -37,6 +36,7 @@ const ReceiptScreen = React.forwardRef<ReceiptScreenRef, ReceiptScreenProps>(
         return () => {};
       }, [])
     );
+
     return (
       <Box flex={1} color="white">
         <Background>

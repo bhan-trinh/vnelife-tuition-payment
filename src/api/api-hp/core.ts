@@ -34,7 +34,7 @@ export const fetchReceiptById = async (id: string) => {
 export const fetchAllReceiptsByUserId = async () => {
   const token = await getData('token');
   const response = await fetch(ROUTES.GET_ALL_RECEIPT_BY_USER_ID, {
-    method: 'GET',
+    method: "GET",
     headers: {
       "Authorization": "Bearer " + token,
     },
@@ -43,4 +43,14 @@ export const fetchAllReceiptsByUserId = async () => {
   return data;
 }
 
-
+export const fetchPaidReceiptsByUserId = async () => {
+  const token = await getData('token');
+  const response = await fetch(ROUTES.GET_PAID_RECEIPT_BY_USER_ID, {
+    method: 'GET',
+    headers: {
+      "Authorization": "Bearer " + token,
+    },
+  });
+  const data = await response.json();
+  return data;
+}

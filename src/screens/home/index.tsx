@@ -29,7 +29,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
     // Get user token when open app
     useEffect(() => {
       const fetchToken = async () => {
-        const res = await getToken('test6', 'abc');
+        const res = await getToken('im blue', 'dabadee');
         if (Object.keys(res).includes('token'))
           await storeData('token', res.token);
         else console.log("Couldn't find user token");
@@ -46,7 +46,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             const res = await fetchAllReceiptsByUserId();
             setReceipts(res);
           } catch (err) {
-            console.log(err);
+            console.log(`Fetch Receipts Failed: ${err}`);
           }
         };
 
