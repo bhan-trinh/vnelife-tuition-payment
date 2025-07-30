@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -7,6 +7,8 @@ import {WelcomePanel} from '@src/components/custom/WelcomePanel';
 import {size} from '@src/utils/styles/size';
 import {PastTransaction} from '@src/components/custom/PastTransaction';
 import {Background} from '@src/components/custom/Background/Background';
+import {useFocusEffect} from '@react-navigation/native';
+import {fetchPaidReceiptsByUserId} from '@src/api/api-hp/core';
 
 export interface HistoryScreenProps
   extends RootStackScreenProps<'HISTORY_SCREEN'> {}
@@ -15,6 +17,25 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
   (props, _ref) => {
     const {} = props;
     const {height} = useWindowDimensions();
+    const [paymentHistory, setPaymentHistory] = useState([]);
+
+    useFocusEffect(
+      React.useCallback(() => {
+        const fetchPaidReceipts = async () => {
+          try {
+            const res = await fetchPaidReceiptsByUserId();
+            console.log(res);
+            setPaymentHistory(res);
+          } catch (err) {
+            console.log(`Fetch Paid Receipts Failed: ${err}`);
+          }
+        };
+        fetchPaidReceipts();
+
+        return () => {};
+      }, [])
+    );
+
     return (
       <Box flex={1} color="white">
         <Background>
@@ -32,16 +53,20 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
                 Lịch sử thanh toán
               </Text>
               <Box>
-                {[0, 1, 2].map(val => (
-                  <PastTransaction key={val} />
-                ))}
+                {paymentHistory ? (
+                  paymentHistory.map(payment => (
+                    <PastTransaction key={payment.id} payment={payment} />
+                  ))
+                ) : (
+                  <></>
+                )}
               </Box>
             </Box>
           </ScrollView>
         </Background>
       </Box>
     );
-  },
+  }
 );
 
 export default React.memo(HistoryScreen);

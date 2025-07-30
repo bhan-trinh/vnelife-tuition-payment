@@ -7,8 +7,21 @@ import {IconBoxSingle} from '../IconBoxSingle';
 import {theme} from '@src/assets/themes/theme';
 import {tuitionServiceImages} from '@src/assets/imgComponents/imgComponents';
 import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
+import {formatMoney} from '@src/utils/func/formatMoney';
 
-export const PastTransaction = () => {
+type GiaoDich = {
+  id: number;
+  ten_thanh_toan: string;
+  dich_vu: string;
+  thoi_gian_giao_dich: any;
+  tong_tien: string;
+};
+
+type PastTransactionProps = {
+  payment: GiaoDich;
+};
+
+export const PastTransaction = ({payment}: PastTransactionProps) => {
   return (
     <Box
       row
@@ -19,17 +32,17 @@ export const PastTransaction = () => {
       <IconBoxSingle icon={tuitionServiceImages.hocmai} title="" />
       <Box flex={1} gap={4}>
         <Text size={size.xl} color={'black'} weight="bold">
-          Thanh toán tiền học (10/2025)
+          {payment.ten_thanh_toan}
         </Text>
         <Box>
           <Text size={size.m} color={'grey'}>
-            09/10/2025 09:00:00
+            {payment.thoi_gian_giao_dich}
           </Text>
         </Box>
 
         <Box>
           <Text size={size.l} color={theme.colors.primary} weight="bold">
-            -10.000.000 VNĐ
+            -{formatMoney(payment.tong_tien)} VNĐ
           </Text>
         </Box>
       </Box>

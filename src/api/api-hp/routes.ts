@@ -5,4 +5,5 @@ export const ROUTES = {
   GET_RECEIPT_BY_ID: SERVER_URL + '/receipt/',
   GET_RECEIPT_BY_BILL_ID: SERVER_URL + '/receipt/bill/',
   GET_ALL_RECEIPT_BY_USER_ID: SERVER_URL + '/receipt/user/getAll',
+  GET_PAID_RECEIPT_BY_USER_ID: SERVER_URL + '/receipt/user/getAllPaid',
 };
