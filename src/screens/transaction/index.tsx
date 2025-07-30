@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {RootStackScreenProps} from '@src/navigation/types';
 import {Box, Text} from '@src/components/core';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -12,6 +12,9 @@ import {Background} from '@src/components/custom/Background/Background';
 import {ReceiptInfoBox} from '@src/components/custom/ReceiptInfoBox';
 import {StudentInfoBox} from '@src/components/custom/StudentInfoBox';
 import {formatMoney} from '@src/utils/func/formatMoney';
+import {useStripe} from '@stripe/stripe-react-native';
+import {fetchPaymentSheetParams} from '@src/api/api-tt/core';
+import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
 
 export interface TransactionScreenProps
   extends RootStackScreenProps<'TRANSACTION_SCREEN'> {}
@@ -36,15 +39,58 @@ const TransactionScreen = React.forwardRef<
     setBillsSelected(newBillsSelected);
   };
 
+  // Set up payment sheet
+  const {initPaymentSheet, presentPaymentSheet} = useStripe();
+  const [loading, setLoading] = useState(false);
+
   const calcTotal = () => {
     var total = 0;
     for (var billIndex in receipt.thanh_toan) {
       if (billsSelected[billIndex]) {
-        total += receipt.thanh_toan[billIndex].tong_tien;
+        total += parseInt(receipt.thanh_toan[billIndex].tong_tien, 10);
       }
     }
     return total;
   };
+
+  const initalizePaymentSheet = async () => {
+    console.log('initializing...');
+    const {paymentIntent, ephemeralKey, customer} =
+      await fetchPaymentSheetParams();
+
+    const {error} = await initPaymentSheet({
+      merchantDisplayName:
+        tuitionServiceList[
+          receipt.dich_vu.toLowerCase() as keyof typeof tuitionServiceList
+        ].title,
+      customerId: customer,
+      customerEphemeralKeySecret: ephemeralKey,
+      paymentIntentClientSecret: paymentIntent,
+      // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
+      //methods that complete payment after a delay, like SEPA Debit and Sofort.
+      allowsDelayedPaymentMethods: true,
+      defaultBillingDetails: {
+        name: 'Jane Doe',
+      },
+    });
+    if (!error) {
+      setLoading(true);
+    }
+  };
+
+  const openPaymentSheet = async () => {
+    const {error} = await presentPaymentSheet();
+
+    if (error) {
+      console.log(`Error code: ${error.code}`, error.message);
+    } else {
+      console.log('Order success!');
+    }
+  };
+
+  useEffect(() => {
+    initalizePaymentSheet();
+  }, []);
 
   return (
     <Box flex={1} color="white">
@@ -132,7 +178,8 @@ const TransactionScreen = React.forwardRef<
             borderRadius: 5,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+          onPress={openPaymentSheet}>
           <Text size={size.l} weight="bold" color={'white'} textAlign="center">
             Xác nhận và tiếp tục
           </Text>

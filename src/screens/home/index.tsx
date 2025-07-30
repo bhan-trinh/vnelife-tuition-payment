@@ -29,7 +29,8 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
     // Get user token when open app
     useEffect(() => {
       const fetchToken = async () => {
-        const res = await getToken('test6', 'abc');
+        const res = await getToken('im blue', 'dabadee');
+        // console.log(res.token);
         if (Object.keys(res).includes('token'))
           await storeData('token', res.token);
         else console.log("Couldn't find user token");
@@ -46,7 +47,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             const res = await fetchAllReceiptsByUserId();
             setReceipts(res);
           } catch (err) {
-            console.log(err);
+            console.log(`Fetch Receipts Failed: ${err}`);
           }
         };
 
@@ -56,7 +57,9 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
             const res = await getData('searchedService');
             const data = res ? res : [];
             setRecentSearch(data.reverse());
-          } catch (err) {}
+          } catch (err) {
+            `Fetch Search Failed: ${err}`;
+          }
         };
 
         fetchReceipts();
@@ -95,30 +98,38 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
                 </Text>
 
                 <Box flex={1} row wrap="wrap">
-                  {recentSearch.map((key, index: number) => {
-                    var element =
-                      tuitionServiceList[
-                        key as keyof typeof tuitionServiceList
-                      ];
-                    return (
-                      <IconBox
-                        key={index}
-                        icon={
-                          tuitionServiceImages[
-                            element.icon as keyof typeof tuitionServiceImages
-                          ]
-                        }
-                        notif={null}
-                        title={element.title}
-                        onPress={() => {
-                          navigation.navigate(ROUTER_ROOT.LOOKUP_SCREEN, {
-                            service: element.icon,
-                          });
-                          addService(key);
-                        }}
-                      />
-                    );
-                  })}
+                  {!recentSearch ? (
+                    <Box middle center flex={1} marginVertical={14}>
+                      <Text size={16}>
+                        Bạn chưa sử dụng dịch vụ nào gần đây
+                      </Text>
+                    </Box>
+                  ) : (
+                    recentSearch.map((key: string, index: number) => {
+                      var element =
+                        tuitionServiceList[
+                          key as keyof typeof tuitionServiceList
+                        ];
+                      return (
+                        <IconBox
+                          key={index}
+                          icon={
+                            tuitionServiceImages[
+                              element.icon as keyof typeof tuitionServiceImages
+                            ]
+                          }
+                          notif={null}
+                          title={element.title}
+                          onPress={() => {
+                            navigation.navigate(ROUTER_ROOT.LOOKUP_SCREEN, {
+                              service: element.icon,
+                            });
+                            addService(key);
+                          }}
+                        />
+                      );
+                    })
+                  )}
                 </Box>
               </Box>
             </Box>

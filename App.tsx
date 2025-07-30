@@ -11,6 +11,7 @@ import {EventsBusServiceManager} from 'vnpt-mini-api';
 import {UserProvider, useUser} from '@src/contexts/user';
 import {getToken} from '@src/api/api-hp/core';
 import {ReceiptProvider} from '@src/contexts/receipt';
+import {StripeProvider} from '@stripe/stripe-react-native';
 
 const App = (props: any) => {
   if (__DEV__) {
@@ -26,9 +27,14 @@ const App = (props: any) => {
         <PaperProvider>
           <GestureHandlerRootView>
             <Host>
-              <ReceiptProvider>
-                <Navigator />
-              </ReceiptProvider>
+              <StripeProvider
+                publishableKey={
+                  'pk_test_51Rq53WBicnVx2gWhMY4bb0mL68mI4Yti7DSRuKCCv1MXpXYQd2FeeECOoD1K93pDhYv8pCFYagOgDuswitUMGvAD003QzxoA9O'
+                }>
+                <ReceiptProvider>
+                  <Navigator />
+                </ReceiptProvider>
+              </StripeProvider>
             </Host>
             <LoadingPortal />
           </GestureHandlerRootView>
