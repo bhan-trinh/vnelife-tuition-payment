@@ -13,8 +13,12 @@ import {ReceiptInfoBox} from '@src/components/custom/ReceiptInfoBox';
 import {StudentInfoBox} from '@src/components/custom/StudentInfoBox';
 import {formatMoney} from '@src/utils/func/formatMoney';
 import {useStripe} from '@stripe/stripe-react-native';
-import {fetchPaymentSheetParams} from '@src/api/api-tt/core';
+import {
+  fetchPaymentSheetParams,
+  updateSuccessfulPayment,
+} from '@src/api/api-tt/core';
 import {tuitionServiceList} from '@src/data/service/tuitionServiceList';
+import {useFocusEffect} from '@react-navigation/native';
 
 export interface TransactionScreenProps
   extends RootStackScreenProps<'TRANSACTION_SCREEN'> {}
@@ -54,9 +58,10 @@ const TransactionScreen = React.forwardRef<
   };
 
   const initalizePaymentSheet = async () => {
-    console.log('initializing...');
+    const total = calcTotal();
+    console.log(`Passing into Payment Intent ${total}`);
     const {paymentIntent, ephemeralKey, customer} =
-      await fetchPaymentSheetParams();
+      await fetchPaymentSheetParams(total, receipt.id);
 
     const {error} = await initPaymentSheet({
       merchantDisplayName:
@@ -79,18 +84,23 @@ const TransactionScreen = React.forwardRef<
   };
 
   const openPaymentSheet = async () => {
+    await initalizePaymentSheet();
     const {error} = await presentPaymentSheet();
 
     if (error) {
       console.log(`Error code: ${error.code}`, error.message);
     } else {
+      await updateSuccessfulPayment(receipt.id);
       console.log('Order success!');
+      navigation.navigate(ROUTER_ROOT.HOME_SCREEN);
     }
   };
 
-  useEffect(() => {
-    initalizePaymentSheet();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {};
+    }, [])
+  );
 
   return (
     <Box flex={1} color="white">

@@ -33,13 +33,18 @@ export const fetchReceiptById = async (id: string) => {
 
 export const fetchAllReceiptsByUserId = async () => {
   const token = await getData('token');
-  const response = await fetch(ROUTES.GET_ALL_RECEIPT_BY_USER_ID, {
+  try {
+    const response = await fetch(ROUTES.GET_ALL_RECEIPT_BY_USER_ID, {
     method: "GET",
     headers: {
       "Authorization": "Bearer " + token,
     },
   });
-  const data = await response.json();
+  var data = await response.json();
+} catch (err) {
+    console.log(`Fetch all receipts by user ID failed: ${err}`)
+    return []
+  }
   return data;
 }
 

@@ -24,7 +24,6 @@ const HistoryScreen = React.forwardRef<HistoryScreenRef, HistoryScreenProps>(
         const fetchPaidReceipts = async () => {
           try {
             const res = await fetchPaidReceiptsByUserId();
-            console.log(res);
             setPaymentHistory(res);
           } catch (err) {
             console.log(`Fetch Paid Receipts Failed: ${err}`);
