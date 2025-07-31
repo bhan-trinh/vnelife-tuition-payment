@@ -29,7 +29,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
     // Get user token when open app
     useEffect(() => {
       const fetchToken = async () => {
-        const res = await getToken('im blue', 'dabadee');
+        const res = await getToken('demo1', 'abc123');
         // console.log(res.token);
         if (Object.keys(res).includes('token'))
           await storeData('token', res.token);
@@ -66,7 +66,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
         fetchSearched();
 
         return () => {};
-      }, [])
+      }, []),
     );
 
     return (
@@ -98,7 +98,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
                 </Text>
 
                 <Box flex={1} row wrap="wrap">
-                  {!recentSearch ? (
+                  {!recentSearch || recentSearch.length === 0 ? (
                     <Box middle center flex={1} marginVertical={14}>
                       <Text size={16}>
                         Bạn chưa sử dụng dịch vụ nào gần đây
@@ -138,7 +138,7 @@ const HomeScreen = React.forwardRef<HomeScreenRef, HomeScreenProps>(
         <ChatBotButton />
       </Box>
     );
-  }
+  },
 );
 
 export default HomeScreen;

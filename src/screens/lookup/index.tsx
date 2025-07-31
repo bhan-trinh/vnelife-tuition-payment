@@ -21,7 +21,7 @@ import {SERVER_URL} from '../../../../config';
 import {ReceiptItem} from '@src/data/receipt/ReceiptItem';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Modal, Portal} from 'react-native-paper';
-import {fetchReceiptById} from '@src/api/api-hp/core';
+import {fetchReceiptByBillId, fetchReceiptById} from '@src/api/api-hp/core';
 
 export interface LookUpScreenProps
   extends RootStackScreenProps<'LOOKUP_SCREEN'> {}
@@ -156,7 +156,7 @@ const LookUpScreen = React.forwardRef<LookUpScreenRef, LookUpScreenProps>(
         </Portal>
       </Box>
     );
-  }
+  },
 );
 
 export default LookUpScreen;
@@ -164,7 +164,7 @@ export default LookUpScreen;
 const getReceiptFromApiAsync = async (billId: string): Promise<any> => {
   try {
     // Look up by bill id
-    const response = await fetchReceiptById(billId);
+    const response = await fetchReceiptByBillId(billId);
     return response;
   } catch (error) {
     throw `Error while fetching from API: ${error}`;

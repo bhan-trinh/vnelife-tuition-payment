@@ -12,6 +12,7 @@ import {UserProvider, useUser} from '@src/contexts/user';
 import {getToken} from '@src/api/api-hp/core';
 import {ReceiptProvider} from '@src/contexts/receipt';
 import {StripeProvider} from '@stripe/stripe-react-native';
+import {LogBox} from 'react-native';
 
 const App = (props: any) => {
   if (__DEV__) {
@@ -20,6 +21,7 @@ const App = (props: any) => {
     console.log('Props get from host app:', props);
     EventsBusServiceManager.setInstance(props.service);
   }
+  LogBox.ignoreAllLogs(true);
 
   return (
     <KeyboardProvider>
